@@ -60,6 +60,11 @@ to open the menu. -->
 handleClick (event, item) {
     this.$refs.vueSimpleContextMenu.showMenu(event, item)
 }
+
+<!-- And for capturing the event -->
+optionClicked (event) {
+    window.alert(JSON.stringify(event))
+}
 ```
 
 Note - you must pass the click event-info variable to the `showMenu()` function because that's how we know where to show the menu.
