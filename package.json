@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-context-menu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple context-menu component built for Vue. Works well with both left and right clicks. Nothing too fancy, just works and is simple to use.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
@@ -28,7 +28,7 @@
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "watch:vue-cli": "vue serve ./src/vue-simple-context-menu.vue",
-    "build": "rm -rf ./dist npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build": "rm -rf ./dist npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:unpkg",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-simple-context-menu.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-simple-context-menu.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-simple-context-menu.min.js",
