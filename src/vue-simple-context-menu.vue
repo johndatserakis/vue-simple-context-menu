@@ -11,6 +11,11 @@
 </template>
 
 <script>
+
+import Vue from 'vue'
+import vClickOutside from 'v-click-outside'
+Vue.use(vClickOutside)
+
 export default {
     name: 'VueSimpleContextMenu',
     props: {
@@ -30,7 +35,8 @@ export default {
     },
     methods: {
         showMenu (event, item) {
-            console.log('here in show menu')
+            this.item = item
+
             var menu = document.getElementById("vue-simple-context-menu")
             if (!menu) {
                 return
@@ -56,28 +62,60 @@ export default {
                 menu.style.top = event.pageY + "px"
             }
 
-            menu.classList.add('active')
+            menu.classList.add('vue-simple-context-menu--active')
         },
         hideContextMenu () {
-            document.getElementById("vue-simple-context-menu").classList.remove('active');
+            document.getElementById("vue-simple-context-menu").classList.remove('vue-simple-context-menu--active');
         },
         onClickOutside (event) {
             this.hideContextMenu()
         },
         optionClicked (option) {
-            // this.$root.$emit('rightClickOptionClicked', this.item, option)
+            this.hideContextMenu()
+            this.$emit('optionClicked', {
+                item: this.item,
+                option: option
+            })
         }
-    },
-    mounted () {
-        // this.$root.$on('rightClick', (item, event) => {
-        //     this.item = item
-        //     this.showMenu(item, event)
-        // })
-    },
-    components: {
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    $light-grey: #ECF0F1;
+    $blue: #3482B5;
+    $white: #fff;
+
+    .vue-simple-context-menu {
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        display: none;
+        list-style: none;
+        position: absolute;
+        z-index: 1000000;
+        background-color: $light-grey;
+        border: 1px solid darken($light-grey, 5%);
+        border-bottom-width: 0px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+        &--active {
+            display: block;
+        }
+
+        &__item {
+            display: flex;
+            cursor: pointer;
+            padding: 12px 22px;
+            align-items: center;
+            border-bottom: 1px solid darken($light-grey, 15%);
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: $blue;
+                color: $white;
+            }
+        }
+    }
 </style>

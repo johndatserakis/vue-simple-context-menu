@@ -11,6 +11,7 @@ const config = {
     output: {
         name: 'VueSimpleContextMenu',
         exports: 'named',
+        globals: {}
     },
     plugins: [
         vue({
@@ -19,6 +20,7 @@ const config = {
         }),
         buble(),
     ],
+    external: ['v-click-outside']
 };
 
 // Only minify browser (iife) version
