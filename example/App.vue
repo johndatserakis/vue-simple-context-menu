@@ -25,19 +25,33 @@
         </div>
 
         <div class="instructions-text">
-            <p>Click on an item below. Works great for right clicks too.</p>
+            <p>Right click on an item below. Works great for left clicks too (see README).</p>
         </div>
 
         <div class="item-wrapper">
-            <div v-for="item in items" @click.prevent.stop="handleClick($event, item)" class="item-wrapper__item">
+            <div v-for="item in itemArray1" @contextmenu.prevent.stop="handleClick1($event, item)" class="item-wrapper__item">
+                {{item.name}}
+            </div>
+        </div>
+
+        <div class="item-wrapper item-wrapper--last">
+            <div v-for="item in itemArray2" @contextmenu.prevent.stop="handleClick2($event, item)" class="item-wrapper__item">
                 {{item.name}}
             </div>
         </div>
 
         <vue-simple-context-menu
-            :options="options"
-            ref="vueSimpleContextMenu"
-            @optionClicked="optionClicked">
+            :id="'myFirstMenu'"
+            :options="optionsArray1"
+            :ref="'vueSimpleContextMenu1'"
+            @optionClicked="optionClicked1">
+        </vue-simple-context-menu>
+
+        <vue-simple-context-menu
+            :id="'mySecondMenu'"
+            :options="optionsArray2"
+            :ref="'vueSimpleContextMenu2'"
+            @optionClicked="optionClicked2">
         </vue-simple-context-menu>
 
     </div>
@@ -48,7 +62,7 @@
         name: 'app',
         data () {
             return {
-                items: [
+                itemArray1: [
                     {
                         name: 'Jim',
                         job: 'Salesman'
@@ -62,7 +76,21 @@
                         job: 'Receptionist'
                     }
                 ],
-                options: [
+                itemArray2: [
+                    {
+                        name: 'Leslie',
+                        job: 'Deputy Director'
+                    },
+                    {
+                        name: 'Ron',
+                        job: 'Parks Director'
+                    },
+                    {
+                        name: 'Andy',
+                        job: 'Shoeshiner'
+                    }
+                ],
+                optionsArray1: [
                     {
                         name: 'Duplicate',
                         slug: 'duplicate'
@@ -75,14 +103,30 @@
                         name: 'Delete',
                         slug: 'delete'
                     }
+                ],
+                optionsArray2: [
+                    {
+                        name: 'Add Star',
+                        slug: 'add-star'
+                    },
+                    {
+                        name: 'Remove Star',
+                        slug: 'remove-star'
+                    }
                 ]
             }
         },
         methods: {
-            handleClick (event, item) {
-                this.$refs.vueSimpleContextMenu.showMenu(event, item)
+            handleClick1 (event, item) {
+                this.$refs.vueSimpleContextMenu1.showMenu(event, item)
             },
-            optionClicked (event) {
+            handleClick2 (event, item) {
+                this.$refs.vueSimpleContextMenu2.showMenu(event, item)
+            },
+            optionClicked1 (event) {
+                window.alert(JSON.stringify(event))
+            },
+            optionClicked2 (event) {
                 window.alert(JSON.stringify(event))
             }
         }
@@ -158,6 +202,10 @@
         flex-direction: column;
         margin: 40px auto 0;
         padding: 40px;
+    }
+
+    .item-wrapper--last {
+        margin-bottom: 60px;
     }
 
     .item-wrapper__item {

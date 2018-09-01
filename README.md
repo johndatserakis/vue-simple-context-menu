@@ -16,7 +16,7 @@ Simple context-menu component built for Vue. Works well with both left and right
 # npm
 npm i vue-simple-context-menu
 
-#yarn
+# yarn
 yarn add vue-simple-context-menu
 ```
 
@@ -26,7 +26,9 @@ Or you can include it through the browser at the bottom of your page:
 
 ### About
 
-Just a simple little menu to be shown where a click happens - closes after use automatically by clicking an option or outside of the menu.
+Just a simple little menu to be shown where a click happens - closes after use automatically by clicking an option or outside of the menu. Multiple menus are supported - just make sure to use a unique string as your `id` prop value.
+
+A nice feature that comes baked in is the menu placement after a click - it sits just ever so slightly under your click location - so that any hover style you had on the item that was clicked gets removed nicely. I modeled it after the macOS right click menu.
 
 ### Usage Example
 
@@ -35,11 +37,10 @@ import VueSimpleContextMenu from 'vue-simple-context-menu'
 Vue.component('vue-simple-context-menu', VueSimpleContextMenu)
 ```
 
-
 ```html
 <!-- This is a basic use case where you have an array of items that you want
 to allow to be clicked. In this case, `items` is an array of objects.
-Each item has a click event that ties to a function. See the demo for a full example. -->
+Each item has a click event that ties to a function. See the demo for a full example (with multiple menus as well). -->
 
 <div class="item-wrapper">
     <div v-for="item in items" @click.prevent.stop="handleClick($event, item)" class="item-wrapper__item">
@@ -51,8 +52,9 @@ Each item has a click event that ties to a function. See the demo for a full exa
 to open the menu. -->
 
 <vue-simple-context-menu
+    :id="'myUniqueId'"
     :options="options"
-    ref="vueSimpleContextMenu"
+    :ref="'vueSimpleContextMenu'"
     @optionClicked="optionClicked">
 </vue-simple-context-menu>
 
@@ -69,13 +71,15 @@ optionClicked (event) {
 
 Note - you must pass the click event-info variable to the `showMenu()` function because that's how we know where to show the menu.
 
-Note - make sure to use `@click.prevent.stop` or `@contextmenu.prevent.stop` for right click) when setting up the click handler.
+Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` for right click) when setting up the click handler.
 
 ### Props
 
-| prop    | type  | description                    |
-|---------|-------|--------------------------------|
-| options | Array | Array of menu options to show. Component will use the `name` parameter as the label. |
+| prop    | type  | description | required |
+|---------|-------|--------------------------------|---|
+| id | String | Unique String that acts as the id of your menu. | Yes |
+| options | Array | Array of menu options to show. Component will use the `name` parameter as the label. | Yes |
+| ref | String | Unique String that allows you to show the menu on command. | Yes |
 
 ### Methods
 

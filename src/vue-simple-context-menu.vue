@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <ul id="vue-simple-context-menu" class="vue-simple-context-menu" v-click-outside="onClickOutside">
+        <ul :id="id" class="vue-simple-context-menu" v-click-outside="onClickOutside">
             <li v-for="option in options" @click="optionClicked(option)" class="vue-simple-context-menu__item">
                 {{option.name}}
             </li>
@@ -19,6 +19,10 @@ Vue.use(vClickOutside)
 export default {
     name: 'VueSimpleContextMenu',
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         options: {
             type: Array,
             required: true
@@ -37,7 +41,7 @@ export default {
         showMenu (event, item) {
             this.item = item
 
-            var menu = document.getElementById("vue-simple-context-menu")
+            var menu = document.getElementById(this.id)
             if (!menu) {
                 return
             }
@@ -51,21 +55,21 @@ export default {
             }
 
             if ((this.menuWidth + event.pageX) >= window.innerWidth) {
-                menu.style.left = (event.pageX - this.menuWidth) + "px"
+                menu.style.left = (event.pageX - this.menuWidth + 2) + "px"
             } else {
-                menu.style.left = event.pageX + "px"
+                menu.style.left = (event.pageX - 2) + "px"
             }
 
             if ((this.menuHeight + event.pageY) >= window.innerHeight) {
-                menu.style.top = (event.pageY - this.menuHeight) + "px"
+                menu.style.top = (event.pageY - this.menuHeight + 2) + "px"
             } else {
-                menu.style.top = event.pageY + "px"
+                menu.style.top = (event.pageY - 2) + "px"
             }
 
             menu.classList.add('vue-simple-context-menu--active')
         },
         hideContextMenu () {
-            document.getElementById("vue-simple-context-menu").classList.remove('vue-simple-context-menu--active');
+            document.getElementById(this.id).classList.remove('vue-simple-context-menu--active');
         },
         onClickOutside (event) {
             this.hideContextMenu()
@@ -83,8 +87,10 @@ export default {
 
 <style lang="scss" scoped>
     $light-grey: #ECF0F1;
+    $grey: darken($light-grey, 15%);
     $blue: #3482B5;
     $white: #fff;
+    $black: #333;
 
     .vue-simple-context-menu {
         top: 0;
@@ -96,9 +102,10 @@ export default {
         position: absolute;
         z-index: 1000000;
         background-color: $light-grey;
-        border: 1px solid darken($light-grey, 5%);
         border-bottom-width: 0px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        box-shadow: 0 3px 6px 0 rgba($black, 0.2);
+        border-radius: 4px;
 
         &--active {
             display: block;
@@ -106,15 +113,26 @@ export default {
 
         &__item {
             display: flex;
+            color: $black;
             cursor: pointer;
-            padding: 12px 22px;
+            padding: 5px 15px;
             align-items: center;
-            border-bottom: 1px solid darken($light-grey, 15%);
-            transition: all 0.2s ease;
 
             &:hover {
                 background-color: $blue;
                 color: $white;
+            }
+        }
+
+        // Have to use the element so we can make use of `first-of-type` and
+        // `last-of-type`
+        li {
+            &:first-of-type {
+                margin-top: 4px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 4px;
             }
         }
     }
