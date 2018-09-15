@@ -63,7 +63,10 @@
                 menu.classList.add('vue-simple-context-menu--active');
             },
             hideContextMenu: function hideContextMenu () {
-                document.getElementById(this.id).classList.remove('vue-simple-context-menu--active');
+                var element = document.getElementById(this.id);
+                if (element) {
+                    element.classList.remove('vue-simple-context-menu--active');
+                }
             },
             onClickOutside: function onClickOutside (event) {
                 this.hideContextMenu();
