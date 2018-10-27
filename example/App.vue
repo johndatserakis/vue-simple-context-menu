@@ -25,7 +25,7 @@
         </div>
 
         <div class="instructions-text">
-            <p>Right click on an item below. Works great for left clicks too (see README).</p>
+            <p>Right click on an item below.</p>
         </div>
 
         <div class="item-wrapper">
@@ -34,8 +34,12 @@
             </div>
         </div>
 
+        <div class="instructions-text">
+            <p>Left click on an item below.</p>
+        </div>
+
         <div class="item-wrapper item-wrapper--last">
-            <div v-for="item in itemArray2" @contextmenu.prevent.stop="handleClick2($event, item)" class="item-wrapper__item">
+            <div v-for="item in itemArray2" @click.prevent.stop="handleClick2($event, item)" class="item-wrapper__item">
                 {{item.name}}
             </div>
         </div>
@@ -139,7 +143,7 @@
         height: 100%;
         height: 100vh;
         width: 100%;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: Verdana, "Helvetica Neue", sans-serif;
     }
 
     #app {
@@ -153,7 +157,7 @@
     .program-name {
         text-align: center;
         font-size: 1.2rem;
-        margin: 40px 0 40px;
+        margin: 60px 0 40px;
         font-weight: bold;
     }
 
@@ -200,8 +204,8 @@
         background: #f6f6f6;
         display: flex;
         flex-direction: column;
-        margin: 40px auto 0;
-        padding: 40px;
+        margin: 40px auto 40px;
+        padding: 40px 0;
     }
 
     .item-wrapper--last {
@@ -215,6 +219,8 @@
         margin-bottom: 10px;
         text-align: center;
         border-radius: 4px;
+        user-select: none;
+        -webkit-user-select: none;
     }
 
     .item-wrapper__item:hover {

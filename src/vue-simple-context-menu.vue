@@ -46,7 +46,7 @@ export default {
                 return
             }
 
-            if(!this.menuWidth || !this.menuHeight) {
+            if (!this.menuWidth || !this.menuHeight) {
                 menu.style.visibility = "hidden"
                 menu.style.display = "block"
                 this.menuWidth = menu.offsetWidth
