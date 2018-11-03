@@ -28,9 +28,13 @@ npm i vue-simple-context-menu
 yarn add vue-simple-context-menu
 ```
 
-Or you can include it through the browser at the bottom of your page:
+Or you can include it through the browser at the bottom of your page along with the css:
 
-`<script src="https://unpkg.com/vue-simple-context-menu"></script>`
+```html
+<script src="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.css">
+```
 
 ### About
 
@@ -41,6 +45,12 @@ A nice feature that comes baked in is the menu placement after a click - it sits
 ### Usage Example
 
 ```html
+<!-- css import for when you want to import the component css into your css file/files  -->
+@import '/path/to/node_modules/vue-simple-context-menu.css';
+
+<!-- css import for when you're importing the css directly in your js  -->
+import 'vue-simple-context-menu/dist/vue-simple-context-menu.css'
+
 import VueSimpleContextMenu from 'vue-simple-context-menu'
 Vue.component('vue-simple-context-menu', VueSimpleContextMenu)
 ```
@@ -60,7 +70,7 @@ Each item has a click event that ties to a function. See the demo for a full exa
 to open the menu. -->
 
 <vue-simple-context-menu
-    :id="'myUniqueId'"
+    :elementId="'myUniqueId'"
     :options="options"
     :ref="'vueSimpleContextMenu'"
     @optionClicked="optionClicked">
@@ -85,7 +95,7 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 | prop    | type  | description | required |
 |---------|-------|--------------------------------|---|
-| id | String | Unique String that acts as the id of your menu. | Yes |
+| elementId | String | Unique String that acts as the id of your menu. | Yes |
 | options | Array | Array of menu options to show. Component will use the `name` parameter as the label. | Yes |
 | ref | String | Unique String that allows you to show the menu on command. | Yes |
 
@@ -120,6 +130,9 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 ``` bash
 # install dependencies
 npm install
+
+# run tests
+npm run test
 
 # serve with hot reload
 npm run watch

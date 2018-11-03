@@ -45,14 +45,14 @@
         </div>
 
         <vue-simple-context-menu
-            :id="'myFirstMenu'"
+            :elementId="'myFirstMenu'"
             :options="optionsArray1"
             :ref="'vueSimpleContextMenu1'"
             @optionClicked="optionClicked1">
         </vue-simple-context-menu>
 
         <vue-simple-context-menu
-            :id="'mySecondMenu'"
+            :elementId="'mySecondMenu'"
             :options="optionsArray2"
             :ref="'vueSimpleContextMenu2'"
             @optionClicked="optionClicked2">

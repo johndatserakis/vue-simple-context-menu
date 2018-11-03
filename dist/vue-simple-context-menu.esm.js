@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import vClickOutside from 'v-click-outside';
 
-(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=".vue-simple-context-menu[data-v-718435e8] { top: 0; left: 0; margin: 0; padding: 0; display: none; list-style: none; position: absolute; z-index: 1000000; background-color: #ECF0F1; border-bottom-width: 0px; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif; box-shadow: 0 3px 6px 0 rgba(51, 51, 51, 0.2); border-radius: 4px; } .vue-simple-context-menu--active[data-v-718435e8] { display: block; } .vue-simple-context-menu__item[data-v-718435e8] { display: flex; color: #333; cursor: pointer; padding: 5px 15px; align-items: center; } .vue-simple-context-menu__item[data-v-718435e8]:hover { background-color: #3482B5; color: #fff; } .vue-simple-context-menu li[data-v-718435e8]:first-of-type { margin-top: 4px; } .vue-simple-context-menu li[data-v-718435e8]:last-of-type { margin-bottom: 4px; } "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+//
 Vue.use(vClickOutside);
 
-var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.onClickOutside),expression:"onClickOutside"}],staticClass:"vue-simple-context-menu",attrs:{"id":_vm.id}},_vm._l((_vm.options),function(option){return _c('li',{staticClass:"vue-simple-context-menu__item",on:{"click":function($event){_vm.optionClicked(option);}}},[_vm._v(" "+_vm._s(option.name)+" ")])}))])},staticRenderFns: [],_scopeId: 'data-v-718435e8',
+var script = {
     name: 'VueSimpleContextMenu',
     props: {
-        id: {
+        elementId: {
             type: String,
             required: true
         },
@@ -23,13 +23,11 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
             menuHeight: null
         }
     },
-    computed: {
-    },
     methods: {
         showMenu: function showMenu (event, item) {
             this.item = item;
 
-            var menu = document.getElementById(this.id);
+            var menu = document.getElementById(this.elementId);
             if (!menu) {
                 return
             }
@@ -57,7 +55,7 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
             menu.classList.add('vue-simple-context-menu--active');
         },
         hideContextMenu: function hideContextMenu () {
-            var element = document.getElementById(this.id);
+            var element = document.getElementById(this.elementId);
             if (element) {
                 element.classList.remove('vue-simple-context-menu--active');
             }
@@ -74,6 +72,98 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
         }
     }
 }
+
+/* script */
+            var __vue_script__ = script;
+/* template */
+var __vue_render__ = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", [
+    _c(
+      "ul",
+      {
+        directives: [
+          {
+            name: "click-outside",
+            rawName: "v-click-outside",
+            value: _vm.onClickOutside,
+            expression: "onClickOutside"
+          }
+        ],
+        staticClass: "vue-simple-context-menu",
+        attrs: { id: _vm.elementId }
+      },
+      _vm._l(_vm.options, function(option) {
+        return _c(
+          "li",
+          {
+            staticClass: "vue-simple-context-menu__item",
+            on: {
+              click: function($event) {
+                _vm.optionClicked(option);
+              }
+            }
+          },
+          [_vm._v("\n            " + _vm._s(option.name) + "\n        ")]
+        )
+      })
+    )
+  ])
+};
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = "data-v-65f428bc";
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* component normalizer */
+  function __vue_normalize__(
+    template, style, script$$1,
+    scope, functional, moduleIdentifier,
+    createInjector, createInjectorSSR
+  ) {
+    var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) { component.functional = true; }
+    }
+
+    component._scopeId = scope;
+
+    
+
+    return component
+  }
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var component = __vue_normalize__(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    undefined,
+    undefined
+  )
 
 // Import vue component
 

@@ -1,5 +1,6 @@
 // rollup.config.js
 import vue from 'rollup-plugin-vue';
+import css from 'rollup-plugin-css-only'
 import buble from 'rollup-plugin-buble';
 import uglify from 'rollup-plugin-uglify-es';
 import minimist from 'minimist';
@@ -18,9 +19,10 @@ const config = {
     },
     plugins: [
         vue({
-            css: true,
+            css: false,
             compileTemplate: true,
         }),
+        css({ output: 'dist/vue-simple-context-menu.css' }),
         buble(),
     ],
     external: ['vue', 'v-click-outside']
