@@ -1,0 +1,38 @@
+
+.vue-simple-context-menu[data-v-65f428bc] {
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: none;
+  list-style: none;
+  position: absolute;
+  z-index: 1000000;
+  background-color: #ECF0F1;
+  border-bottom-width: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  box-shadow: 0 3px 6px 0 rgba(51, 51, 51, 0.2);
+  border-radius: 4px;
+}
+.vue-simple-context-menu--active[data-v-65f428bc] {
+    display: block;
+}
+.vue-simple-context-menu__item[data-v-65f428bc] {
+    display: flex;
+    color: #333;
+    cursor: pointer;
+    padding: 5px 15px;
+    align-items: center;
+}
+.vue-simple-context-menu__item[data-v-65f428bc]:hover {
+      background-color: #007AFF;
+      color: #fff;
+}
+.vue-simple-context-menu li[data-v-65f428bc]:first-of-type {
+    margin-top: 4px;
+}
+.vue-simple-context-menu li[data-v-65f428bc]:last-of-type {
+    margin-bottom: 4px;
+}
+
+/*# sourceMappingURL=vue-simple-context-menu.vue.map */

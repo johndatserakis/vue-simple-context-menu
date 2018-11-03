@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <ul :id="id" class="vue-simple-context-menu" v-click-outside="onClickOutside">
+        <ul :id="elementId" class="vue-simple-context-menu" v-click-outside="onClickOutside">
             <li v-for="option in options" @click="optionClicked(option)" class="vue-simple-context-menu__item">
                 {{option.name}}
             </li>
@@ -19,7 +19,7 @@ Vue.use(vClickOutside)
 export default {
     name: 'VueSimpleContextMenu',
     props: {
-        id: {
+        elementId: {
             type: String,
             required: true
         },
@@ -35,13 +35,11 @@ export default {
             menuHeight: null
         }
     },
-    computed: {
-    },
     methods: {
         showMenu (event, item) {
             this.item = item
 
-            var menu = document.getElementById(this.id)
+            var menu = document.getElementById(this.elementId)
             if (!menu) {
                 return
             }
@@ -69,7 +67,7 @@ export default {
             menu.classList.add('vue-simple-context-menu--active')
         },
         hideContextMenu () {
-            let element = document.getElementById(this.id)
+            let element = document.getElementById(this.elementId)
             if (element) {
                 element.classList.remove('vue-simple-context-menu--active');
             }
@@ -91,7 +89,7 @@ export default {
 <style lang="scss" scoped>
     $light-grey: #ECF0F1;
     $grey: darken($light-grey, 15%);
-    $blue: #3482B5;
+    $blue: #007AFF;
     $white: #fff;
     $black: #333;
 
