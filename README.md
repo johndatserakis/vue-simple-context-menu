@@ -144,7 +144,6 @@ npm run build:example
 npm run build
 
 # publish to npm
-npm version patch
 npm publish
 ```
 

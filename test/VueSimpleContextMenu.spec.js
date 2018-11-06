@@ -105,7 +105,7 @@ describe('VueSimpleContextMenu.vue', () => {
 
         // Menu show be showing our selected item
         expect(wrapper.vm.item.name).toBe('Jim')
-        expect(wrapper.vm.item.name).toBe('Jim')
+        expect(wrapper.vm.item.job).toBe('Salesman')
 
         // Manually click an item on the menu
         // Here we know the options because we set them earlier
