@@ -8,39 +8,61 @@
             </svg>
         </a>
 
-        <div class="program-name">
-            vue-simple-context-menu
-        </div>
-
-        <div class="install-text">
-            npm i vue-simple-context-menu
-        </div>
-
-        <div class="info-link">
-            <a class="info-link__link" href="https://github.com/johndatserakis/vue-simple-context-menu">View on GitHub</a>
-        </div>
-
-        <div class="info-link">
-            <a class="info-link__link" href="https://www.npmjs.com/package/vue-simple-context-menu">View on NPM</a>
-        </div>
-
-        <div class="instructions-text">
-            <p>Right click on an item below.</p>
-        </div>
-
-        <div class="item-wrapper">
-            <div v-for="item in itemArray1" @contextmenu.prevent.stop="handleClick1($event, item)" class="item-wrapper__item">
-                {{item.name}}
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h3><strong>vue-simple-context-menu</strong></h3>
+                </div>
             </div>
         </div>
 
-        <div class="instructions-text">
-            <p>Left click on an item below.</p>
+        <div class="container pt-3 pb-4">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <span class="badge badge-primary mb-1">install</span>
+                    <div class="code-text">npm i vue-simple-context-menu</div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="list-group">
+                      <a href="https://github.com/johndatserakis/vue-simple-context-menu" class="list-group-item list-group-item-action" target="_blank">View on GitHub</a>
+                      <a href="https://www.npmjs.com/package/vue-simple-context-menu" class="list-group-item list-group-item-action" target="_blank">View on NPM</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="item-wrapper item-wrapper--last">
-            <div v-for="item in itemArray2" @click.prevent.stop="handleClick2($event, item)" class="item-wrapper__item">
-                {{item.name}}
+        <div class="container py-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-2 pb-4">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p>Right click on an item below.</p>
+
+                    <div class="list-group">
+                        <div v-for="item in itemArray1" @contextmenu.prevent.stop="handleClick1($event, item)" class="list-group-item list-group-item-action">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <p>Left click on an item below.</p>
+
+                    <div class="list-group">
+                        <div v-for="item in itemArray2" @click.prevent.stop="handleClick2($event, item)" class="list-group-item list-group-item-action">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -137,112 +159,64 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+
+    html {
+        width: 100%;
+        font-size: 18px;
+        color: #333;
+    }
+
     body {
         margin: 0;
         height: 100%;
         height: 100vh;
         width: 100%;
-        font-family: Verdana, "Helvetica Neue", sans-serif;
+        font-family: 'Muli', sans-serif;
     }
 
     #app {
         height: 100%;
         height: 100vh;
         width: 100%;
-        background-color: #fff;
         line-height: 1.5;
     }
 
-    .program-name {
+    .code-text {
+        background: #eee;
+        border: 1px solid #ddd;
+        padding: 10px 20px;
+        border-radius: 4px;
+        margin-bottom: 20px;
         text-align: center;
-        font-size: 1.2rem;
-        margin: 60px 0 40px;
-        font-weight: bold;
     }
 
     @media (min-width: 992px) {
-        .program-name {
-            font-size: 2.0rem;
+        .code-text {
+            margin-bottom: 0;
         }
     }
 
-    .install-text {
-        text-align: center;
-        font-size: 0.9rem;
-        margin: 0 auto 40px;
-        background: #eee;
-        padding: 10px 20px;
-        border-radius: 6px;
-        width: 275px;
-        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    .btn {
+        text-transform: uppercase;
+        font-weight: bold;
     }
 
-    .info-link {
-        text-align: center;
-        margin-bottom: 5px;
-        text-decoration: none;
-        color: #56A6EF;
-    }
-
-    .info-link__link {
-        text-decoration: none;
-        color: #56A6EF;
-    }
-
-    .info-link__link:hover {
-        color: #2f4265;
-    }
-
-    .instructions-text {
-        text-align: center;
-        margin: 20px 0 20px;
-    }
-
-    .item-wrapper {
-        width: 275px;
-        background: #f6f6f6;
-        display: flex;
-        flex-direction: column;
-        margin: 40px auto 40px;
-        padding: 40px 0;
-    }
-
-    .item-wrapper--last {
-        margin-bottom: 60px;
-    }
-
-    .item-wrapper__item {
-        font-size: 1.2rem;
-        padding: 10px;
-        background: #e4e4e4;
-        margin-bottom: 10px;
-        text-align: center;
-        border-radius: 4px;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-
-    .item-wrapper__item:hover {
-        background: #56A6EF;
-        color: #fff;
-        cursor: pointer;
-    }
-
-    .item-wrapper__item:active {
-        background: #476398;
-        color: #fff;
-        cursor: pointer;
+    textarea {
+        min-height: 175px;
     }
 
     .github-corner:hover .octo-arm {
         animation:octocat-wave 560ms ease-in-out
     }
+
     @keyframes octocat-wave {
         0%,100% {transform:rotate(0)}
         20%,60% {transform:rotate(-25deg)}
         40%,80% {transform:rotate(10deg)}
     }
+
     @media (max-width:500px) {
         .github-corner:hover .octo-arm {animation:none}
         .github-corner .octo-arm {animation:octocat-wave 560ms ease-in-out}
