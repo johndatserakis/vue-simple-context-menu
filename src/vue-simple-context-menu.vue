@@ -2,7 +2,7 @@
     <div>
 
         <ul :id="elementId" class="vue-simple-context-menu" v-click-outside="onClickOutside">
-            <li v-for="option in options" @click="optionClicked(option)" class="vue-simple-context-menu__item">
+            <li v-for="(option, index) in options" :key="index" @click="optionClicked(option)" class="vue-simple-context-menu__item">
                 {{option.name}}
             </li>
         </ul>
@@ -72,7 +72,7 @@ export default {
                 element.classList.remove('vue-simple-context-menu--active');
             }
         },
-        onClickOutside (event) {
+        onClickOutside () {
             this.hideContextMenu()
         },
         optionClicked (option) {
