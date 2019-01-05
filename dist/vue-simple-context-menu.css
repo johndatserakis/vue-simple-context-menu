@@ -1,5 +1,4 @@
-
-.vue-simple-context-menu[data-v-65f428bc] {
+.vue-simple-context-menu[data-v-e8d60d36] {
   top: 0;
   left: 0;
   margin: 0;
@@ -14,24 +13,24 @@
   box-shadow: 0 3px 6px 0 rgba(51, 51, 51, 0.2);
   border-radius: 4px;
 }
-.vue-simple-context-menu--active[data-v-65f428bc] {
+.vue-simple-context-menu--active[data-v-e8d60d36] {
     display: block;
 }
-.vue-simple-context-menu__item[data-v-65f428bc] {
+.vue-simple-context-menu__item[data-v-e8d60d36] {
     display: flex;
     color: #333;
     cursor: pointer;
     padding: 5px 15px;
     align-items: center;
 }
-.vue-simple-context-menu__item[data-v-65f428bc]:hover {
+.vue-simple-context-menu__item[data-v-e8d60d36]:hover {
       background-color: #007AFF;
       color: #fff;
 }
-.vue-simple-context-menu li[data-v-65f428bc]:first-of-type {
+.vue-simple-context-menu li[data-v-e8d60d36]:first-of-type {
     margin-top: 4px;
 }
-.vue-simple-context-menu li[data-v-65f428bc]:last-of-type {
+.vue-simple-context-menu li[data-v-e8d60d36]:last-of-type {
     margin-bottom: 4px;
 }
 

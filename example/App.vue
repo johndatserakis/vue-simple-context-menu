@@ -48,7 +48,7 @@
                     <p>Right click on an item below.</p>
 
                     <div class="list-group">
-                        <div v-for="item in itemArray1" @contextmenu.prevent.stop="handleClick1($event, item)" class="list-group-item list-group-item-action">
+                        <div v-for="(item, index) in itemArray1" :key="index" @contextmenu.prevent.stop="handleClick1($event, item)" class="list-group-item list-group-item-action">
                             {{item.name}}
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <p>Left click on an item below.</p>
 
                     <div class="list-group">
-                        <div v-for="item in itemArray2" @click.prevent.stop="handleClick2($event, item)" class="list-group-item list-group-item-action">
+                        <div v-for="(item, index) in itemArray2" :key="index" @click.prevent.stop="handleClick2($event, item)" class="list-group-item list-group-item-action">
                             {{item.name}}
                         </div>
                     </div>

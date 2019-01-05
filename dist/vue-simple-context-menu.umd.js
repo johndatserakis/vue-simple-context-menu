@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue'), require('v-click-outside')) :
     typeof define === 'function' && define.amd ? define(['exports', 'vue', 'v-click-outside'], factory) :
-    (factory((global.VueSimpleContextMenu = {}),global.Vue,global.vClickOutside));
-}(this, (function (exports,Vue,vClickOutside) { 'use strict';
+    (global = global || self, factory(global.VueSimpleContextMenu = {}, global.Vue, global.vClickOutside));
+}(this, function (exports, Vue, vClickOutside) { 'use strict';
 
     Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
     vClickOutside = vClickOutside && vClickOutside.hasOwnProperty('default') ? vClickOutside['default'] : vClickOutside;
@@ -66,7 +66,7 @@
                     element.classList.remove('vue-simple-context-menu--active');
                 }
             },
-            onClickOutside: function onClickOutside (event) {
+            onClickOutside: function onClickOutside () {
                 this.hideContextMenu();
             },
             optionClicked: function optionClicked (option) {
@@ -77,7 +77,7 @@
                 });
             }
         }
-    }
+    };
 
     /* script */
                 var __vue_script__ = script;
@@ -101,10 +101,11 @@
             staticClass: "vue-simple-context-menu",
             attrs: { id: _vm.elementId }
           },
-          _vm._l(_vm.options, function(option) {
+          _vm._l(_vm.options, function(option, index) {
             return _c(
               "li",
               {
+                key: index,
                 staticClass: "vue-simple-context-menu__item",
                 on: {
                   click: function($event) {
@@ -114,7 +115,8 @@
               },
               [_vm._v("\n            " + _vm._s(option.name) + "\n        ")]
             )
-          })
+          }),
+          0
         )
       ])
     };
@@ -124,7 +126,7 @@
       /* style */
       var __vue_inject_styles__ = undefined;
       /* scoped */
-      var __vue_scope_id__ = "data-v-65f428bc";
+      var __vue_scope_id__ = "data-v-e8d60d36";
       /* module identifier */
       var __vue_module_identifier__ = undefined;
       /* functional template */
@@ -138,7 +140,7 @@
         var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
 
         // For security concerns, we use only base name in production mode.
-        component.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
+        component.__file = "/Users/mac/projects/open-source/vuejs/vue-simple-context-menu/src/vue-simple-context-menu.vue";
 
         if (!component.render) {
           component.render = template.render;
@@ -149,8 +151,6 @@
         }
 
         component._scopeId = scope;
-
-        
 
         return component
       }
@@ -169,7 +169,7 @@
         __vue_module_identifier__,
         undefined,
         undefined
-      )
+      );
 
     // Import vue component
 
@@ -205,4 +205,4 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

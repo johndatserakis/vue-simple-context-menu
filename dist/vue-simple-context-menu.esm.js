@@ -60,7 +60,7 @@ var script = {
                 element.classList.remove('vue-simple-context-menu--active');
             }
         },
-        onClickOutside: function onClickOutside (event) {
+        onClickOutside: function onClickOutside () {
             this.hideContextMenu();
         },
         optionClicked: function optionClicked (option) {
@@ -71,7 +71,7 @@ var script = {
             });
         }
     }
-}
+};
 
 /* script */
             var __vue_script__ = script;
@@ -95,10 +95,11 @@ var __vue_render__ = function() {
         staticClass: "vue-simple-context-menu",
         attrs: { id: _vm.elementId }
       },
-      _vm._l(_vm.options, function(option) {
+      _vm._l(_vm.options, function(option, index) {
         return _c(
           "li",
           {
+            key: index,
             staticClass: "vue-simple-context-menu__item",
             on: {
               click: function($event) {
@@ -108,7 +109,8 @@ var __vue_render__ = function() {
           },
           [_vm._v("\n            " + _vm._s(option.name) + "\n        ")]
         )
-      })
+      }),
+      0
     )
   ])
 };
@@ -118,7 +120,7 @@ __vue_render__._withStripped = true;
   /* style */
   var __vue_inject_styles__ = undefined;
   /* scoped */
-  var __vue_scope_id__ = "data-v-65f428bc";
+  var __vue_scope_id__ = "data-v-e8d60d36";
   /* module identifier */
   var __vue_module_identifier__ = undefined;
   /* functional template */
@@ -132,7 +134,7 @@ __vue_render__._withStripped = true;
     var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
 
     // For security concerns, we use only base name in production mode.
-    component.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
+    component.__file = "/Users/mac/projects/open-source/vuejs/vue-simple-context-menu/src/vue-simple-context-menu.vue";
 
     if (!component.render) {
       component.render = template.render;
@@ -143,8 +145,6 @@ __vue_render__._withStripped = true;
     }
 
     component._scopeId = scope;
-
-    
 
     return component
   }
@@ -163,7 +163,7 @@ __vue_render__._withStripped = true;
     __vue_module_identifier__,
     undefined,
     undefined
-  )
+  );
 
 // Import vue component
 
