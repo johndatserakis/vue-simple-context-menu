@@ -120,7 +120,7 @@ __vue_render__._withStripped = true;
   /* style */
   var __vue_inject_styles__ = undefined;
   /* scoped */
-  var __vue_scope_id__ = "data-v-a99b4df2";
+  var __vue_scope_id__ = undefined;
   /* module identifier */
   var __vue_module_identifier__ = undefined;
   /* functional template */
@@ -134,7 +134,7 @@ __vue_render__._withStripped = true;
     var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
 
     // For security concerns, we use only base name in production mode.
-    component.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
+    component.__file = "/Users/promosis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
 
     if (!component.render) {
       component.render = template.render;

@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.0 (2019-01-07)
+- Removing `scoped` from the `style` to make allow proper overwriting of styles
+
 ## 3.0.1 (2019-01-04)
 - Thank you to @ansidev. Updated dependencies, cleaned up code.
 
