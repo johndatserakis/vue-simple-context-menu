@@ -2,6 +2,7 @@
 import vue from 'rollup-plugin-vue';
 import css from 'rollup-plugin-css-only'
 import buble from 'rollup-plugin-buble';
+import commonjs from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
 
@@ -18,6 +19,7 @@ const config = {
         }
     },
     plugins: [
+        commonjs(),
         vue({
             css: false,
             compileTemplate: true,
