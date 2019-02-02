@@ -73,8 +73,95 @@ var script = {
     }
 };
 
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
+/* server only */
+, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+  if (typeof shadowMode !== 'boolean') {
+    createInjectorSSR = createInjector;
+    createInjector = shadowMode;
+    shadowMode = false;
+  } // Vue.extend constructor export interop.
+
+
+  var options = typeof script === 'function' ? script.options : script; // render functions
+
+  if (template && template.render) {
+    options.render = template.render;
+    options.staticRenderFns = template.staticRenderFns;
+    options._compiled = true; // functional template
+
+    if (isFunctionalTemplate) {
+      options.functional = true;
+    }
+  } // scopedId
+
+
+  if (scopeId) {
+    options._scopeId = scopeId;
+  }
+
+  var hook;
+
+  if (moduleIdentifier) {
+    // server build
+    hook = function hook(context) {
+      // 2.3 injection
+      context = context || // cached call
+      this.$vnode && this.$vnode.ssrContext || // stateful
+      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+      // 2.2 with runInNewContext: true
+
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__;
+      } // inject component styles
+
+
+      if (style) {
+        style.call(this, createInjectorSSR(context));
+      } // register component module identifier for async chunk inference
+
+
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier);
+      }
+    }; // used by ssr in case component is cached and beforeCreate
+    // never gets called
+
+
+    options._ssrRegister = hook;
+  } else if (style) {
+    hook = shadowMode ? function () {
+      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    } : function (context) {
+      style.call(this, createInjector(context));
+    };
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // register for functional component in vue file
+      var originalRender = options.render;
+
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context);
+        return originalRender(h, context);
+      };
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate;
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+    }
+  }
+
+  return script;
+}
+
+var normalizeComponent_1 = normalizeComponent;
+
 /* script */
-            var __vue_script__ = script;
+var __vue_script__ = script;
+// For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
+script.__file = "/Users/promosis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
 /* template */
 var __vue_render__ = function() {
   var _vm = this;
@@ -125,36 +212,13 @@ __vue_render__._withStripped = true;
   var __vue_module_identifier__ = undefined;
   /* functional template */
   var __vue_is_functional_template__ = false;
-  /* component normalizer */
-  function __vue_normalize__(
-    template, style, script$$1,
-    scope, functional, moduleIdentifier,
-    createInjector, createInjectorSSR
-  ) {
-    var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
-
-    // For security concerns, we use only base name in production mode.
-    component.__file = "/Users/promosis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
-
-    if (!component.render) {
-      component.render = template.render;
-      component.staticRenderFns = template.staticRenderFns;
-      component._compiled = true;
-
-      if (functional) { component.functional = true; }
-    }
-
-    component._scopeId = scope;
-
-    return component
-  }
   /* style inject */
-  
-  /* style inject SSR */
-  
 
-  
-  var component = __vue_normalize__(
+  /* style inject SSR */
+
+
+
+  var component = normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -169,25 +233,25 @@ __vue_render__._withStripped = true;
 
 // install function executed by Vue.use()
 function install(Vue$$1) {
-	if (install.installed) { return; }
-	install.installed = true;
-	Vue$$1.component('VueSimpleContextMenu', component);
+    if (install.installed) { return; }
+    install.installed = true;
+    Vue$$1.component('VueSimpleContextMenu', component);
 }
 
 // Create module definition for Vue.use()
 var plugin = {
-	install: install,
+    install: install,
 };
 
 // To auto-install when vue is found
 var GlobalVue = null;
 if (typeof window !== 'undefined') {
-	GlobalVue = window.Vue;
+    GlobalVue = window.Vue;
 } else if (typeof global !== 'undefined') {
-	GlobalVue = global.Vue;
+    GlobalVue = global.Vue;
 }
 if (GlobalVue) {
-	GlobalVue.use(plugin);
+    GlobalVue.use(plugin);
 }
 
 // It's possible to expose named exports when writing components that can

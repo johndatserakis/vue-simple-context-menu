@@ -1,12 +1,10 @@
 <template>
     <div>
-
         <ul :id="elementId" class="vue-simple-context-menu" v-click-outside="onClickOutside">
             <li v-for="(option, index) in options" :key="index" @click="optionClicked(option)" class="vue-simple-context-menu__item">
                 {{option.name}}
             </li>
         </ul>
-
     </div>
 </template>
 
