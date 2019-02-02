@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.1
+- Updated dependencies, migrate config, beautify code. Thanks @ansidev!
+
 ## 3.1.0 (2019-01-07)
 - Removing `scoped` from the `style` to make allow proper overwriting of styles
 

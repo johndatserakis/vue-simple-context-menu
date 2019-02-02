@@ -167,7 +167,7 @@
     /* script */
     var __vue_script__ = script;
     // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-    script.__file = "/Users/promosis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
+    script.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
     /* template */
     var __vue_render__ = function() {
       var _vm = this;
@@ -219,11 +219,11 @@
       /* functional template */
       var __vue_is_functional_template__ = false;
       /* style inject */
-
+      
       /* style inject SSR */
+      
 
-
-
+      
       var component = normalizeComponent_1(
         { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
         __vue_inject_styles__,
