@@ -166,8 +166,6 @@
 
     /* script */
     var __vue_script__ = script;
-    // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-    script.__file = "/Users/johndatserakis/Documents/Code/vue-simple-context-menu/src/vue-simple-context-menu.vue";
     /* template */
     var __vue_render__ = function() {
       var _vm = this;
@@ -196,7 +194,7 @@
                 staticClass: "vue-simple-context-menu__item",
                 on: {
                   click: function($event) {
-                    _vm.optionClicked(option);
+                    return _vm.optionClicked(option)
                   }
                 }
               },
@@ -238,10 +236,10 @@
     // Import vue component
 
     // install function executed by Vue.use()
-    function install(Vue$$1) {
+    function install(Vue) {
         if (install.installed) { return; }
         install.installed = true;
-        Vue$$1.component('VueSimpleContextMenu', component);
+        Vue.component('VueSimpleContextMenu', component);
     }
 
     // Create module definition for Vue.use()

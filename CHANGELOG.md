@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.2
+- Build update to properly allow for iife build.
+
 ## 3.1.1
 - Updated dependencies, migrate config, beautify code. Thanks @ansidev!
 
