@@ -73,7 +73,7 @@ to open the menu. -->
     :elementId="'myUniqueId'"
     :options="options"
     :ref="'vueSimpleContextMenu'"
-    @optionClicked="optionClicked">
+    @option-clicked="optionClicked">
 </vue-simple-context-menu>
 
 <!-- The click-handler function -->
@@ -109,7 +109,7 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 | event    | value  | description                    |
 |---------|-------|--------------------------------|
-| optionClicked | Object | When a menu item is clicked the component will emit an event with a value containing the clicked item and the menu option that was clicked. Register for this event to capture the selection result. |
+| option-clicked | Object | When a menu item is clicked the component will emit an event with a value containing the clicked item and the menu option that was clicked. Register for this event to capture the selection result. |
 
 ### SASS Structure
 

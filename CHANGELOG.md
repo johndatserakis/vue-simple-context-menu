@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.3
+- Fixing emitting to use kebab-case
+
 ## 3.1.2
 - Build update to properly allow for iife build.
 

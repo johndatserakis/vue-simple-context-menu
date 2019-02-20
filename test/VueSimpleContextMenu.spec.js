@@ -112,6 +112,6 @@ describe('VueSimpleContextMenu.vue', () => {
         wrapper.vm.optionClicked(initialPropsData[0])
 
         // Check the event was emitted properly
-        expect(wrapper.emitted().optionClicked).toBeTruthy()
+        expect(wrapper.emitted('option-clicked')).toBeTruthy()
     })
 })

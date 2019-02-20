@@ -70,14 +70,14 @@
             :elementId="'myFirstMenu'"
             :options="optionsArray1"
             :ref="'vueSimpleContextMenu1'"
-            @optionClicked="optionClicked1">
+            @option-clicked="optionClicked1">
         </vue-simple-context-menu>
 
         <vue-simple-context-menu
             :elementId="'mySecondMenu'"
             :options="optionsArray2"
             :ref="'vueSimpleContextMenu2'"
-            @optionClicked="optionClicked2">
+            @option-clicked="optionClicked2">
         </vue-simple-context-menu>
 
     </div>

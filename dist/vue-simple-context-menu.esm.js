@@ -65,7 +65,7 @@ var script = {
         },
         optionClicked: function optionClicked (option) {
             this.hideContextMenu();
-            this.$emit('optionClicked', {
+            this.$emit('option-clicked', {
                 item: this.item,
                 option: option
             });
