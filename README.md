@@ -131,20 +131,20 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 # install dependencies
 npm install
 
-# run tests
-npm run test
-
 # serve with hot reload
 npm run watch
+
+# run the tests
+npm run test
 
 # build demo page
 npm run build:example
 
-# build
-npm run build
+# build library
+npm run build:library
 
-# publish to npm
-npm publish
+# build everything and run tests
+npm run build
 ```
 
 ### Other
