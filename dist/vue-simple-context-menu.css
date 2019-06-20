@@ -14,24 +14,24 @@
   border-radius: 4px;
 }
 .vue-simple-context-menu--active {
-    display: block;
+  display: block;
 }
 .vue-simple-context-menu__item {
-    display: flex;
-    color: #333;
-    cursor: pointer;
-    padding: 5px 15px;
-    align-items: center;
+  display: flex;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 15px;
+  align-items: center;
 }
 .vue-simple-context-menu__item:hover {
-      background-color: #007AFF;
-      color: #fff;
+  background-color: #007AFF;
+  color: #fff;
 }
 .vue-simple-context-menu li:first-of-type {
-    margin-top: 4px;
+  margin-top: 4px;
 }
 .vue-simple-context-menu li:last-of-type {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 /*# sourceMappingURL=vue-simple-context-menu.vue.map */

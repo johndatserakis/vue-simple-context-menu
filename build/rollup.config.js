@@ -20,11 +20,7 @@ const config = {
     },
     plugins: [
         commonjs(),
-        resolve({
-            jsnext: true,
-            main: true,
-            browser: true,
-        }),
+        resolve(),
         vue({
             css: false,
             compileTemplate: true,
