@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
@@ -88,10 +88,9 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
+      new TerserPlugin({
         parallel: 4,
-        uglifyOptions: {
+        terserOptions: {
           warnings: false,
           compress: {
             warnings: false

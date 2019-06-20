@@ -262,8 +262,8 @@
     // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
     // export const RollupDemoDirective = component;
 
-    exports.install = install;
     exports.default = component;
+    exports.install = install;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
