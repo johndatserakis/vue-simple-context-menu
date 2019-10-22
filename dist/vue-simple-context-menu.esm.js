@@ -5,72 +5,72 @@ import vClickOutside from 'v-click-outside';
 Vue.use(vClickOutside);
 
 var script = {
-    name: 'VueSimpleContextMenu',
-    props: {
-        elementId: {
-            type: String,
-            required: true
-        },
-        options: {
-            type: Array,
-            required: true
-        }
+  name: 'VueSimpleContextMenu',
+  props: {
+    elementId: {
+      type: String,
+      required: true
     },
-    data: function data () {
-        return {
-            item: null,
-            menuWidth: null,
-            menuHeight: null
-        }
-    },
-    methods: {
-        showMenu: function showMenu (event, item) {
-            this.item = item;
-
-            var menu = document.getElementById(this.elementId);
-            if (!menu) {
-                return
-            }
-
-            if (!this.menuWidth || !this.menuHeight) {
-                menu.style.visibility = "hidden";
-                menu.style.display = "block";
-                this.menuWidth = menu.offsetWidth;
-                this.menuHeight = menu.offsetHeight;
-                menu.removeAttribute("style");
-            }
-
-            if ((this.menuWidth + event.pageX) >= window.innerWidth) {
-                menu.style.left = (event.pageX - this.menuWidth + 2) + "px";
-            } else {
-                menu.style.left = (event.pageX - 2) + "px";
-            }
-
-            if ((this.menuHeight + event.pageY) >= window.innerHeight) {
-                menu.style.top = (event.pageY - this.menuHeight + 2) + "px";
-            } else {
-                menu.style.top = (event.pageY - 2) + "px";
-            }
-
-            menu.classList.add('vue-simple-context-menu--active');
-        },
-        hideContextMenu: function hideContextMenu () {
-            var element = document.getElementById(this.elementId);
-            if (element) {
-                element.classList.remove('vue-simple-context-menu--active');
-            }
-        },
-        onClickOutside: function onClickOutside () {
-            this.hideContextMenu();
-        },
-        optionClicked: function optionClicked (option) {
-            this.hideContextMenu();
-            this.$emit('option-clicked', {
-                item: this.item,
-                option: option
-            });
-        }
+    options: {
+      type: Array,
+      required: true
     }
+  },
+  data: function data () {
+    return {
+      item: null,
+      menuWidth: null,
+      menuHeight: null
+    }
+  },
+  methods: {
+    showMenu: function showMenu (event, item) {
+      this.item = item;
+
+      var menu = document.getElementById(this.elementId);
+      if (!menu) {
+        return
+      }
+
+      if (!this.menuWidth || !this.menuHeight) {
+        menu.style.visibility = "hidden";
+        menu.style.display = "block";
+        this.menuWidth = menu.offsetWidth;
+        this.menuHeight = menu.offsetHeight;
+        menu.removeAttribute("style");
+      }
+
+      if ((this.menuWidth + event.pageX) >= window.innerWidth) {
+        menu.style.left = (event.pageX - this.menuWidth + 2) + "px";
+      } else {
+        menu.style.left = (event.pageX - 2) + "px";
+      }
+
+      if ((this.menuHeight + event.pageY) >= window.innerHeight) {
+        menu.style.top = (event.pageY - this.menuHeight + 2) + "px";
+      } else {
+        menu.style.top = (event.pageY - 2) + "px";
+      }
+
+      menu.classList.add('vue-simple-context-menu--active');
+    },
+    hideContextMenu: function hideContextMenu () {
+      var element = document.getElementById(this.elementId);
+      if (element) {
+        element.classList.remove('vue-simple-context-menu--active');
+      }
+    },
+    onClickOutside: function onClickOutside () {
+      this.hideContextMenu();
+    },
+    optionClicked: function optionClicked (option) {
+      this.hideContextMenu();
+      this.$emit('option-clicked', {
+        item: this.item,
+        option: option
+      });
+    }
+  }
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -186,13 +186,14 @@ var __vue_render__ = function() {
           {
             key: index,
             staticClass: "vue-simple-context-menu__item",
+            class: option.class,
             on: {
               click: function($event) {
                 return _vm.optionClicked(option)
               }
             }
           },
-          [_vm._v("\n            " + _vm._s(option.name) + "\n        ")]
+          [_vm._v("\n      " + _vm._s(option.name) + "\n    ")]
         )
       }),
       0
@@ -230,26 +231,26 @@ __vue_render__._withStripped = true;
 // Import vue component
 
 // install function executed by Vue.use()
-function install(Vue) {
-    if (install.installed) { return; }
-    install.installed = true;
-    Vue.component('VueSimpleContextMenu', component);
+function install (Vue) {
+  if (install.installed) { return; }
+  install.installed = true;
+  Vue.component('VueSimpleContextMenu', component);
 }
 
 // Create module definition for Vue.use()
 var plugin = {
-    install: install,
+  install: install,
 };
 
 // To auto-install when vue is found
 var GlobalVue = null;
 if (typeof window !== 'undefined') {
-    GlobalVue = window.Vue;
+  GlobalVue = window.Vue;
 } else if (typeof global !== 'undefined') {
-    GlobalVue = global.Vue;
+  GlobalVue = global.Vue;
 }
 if (GlobalVue) {
-    GlobalVue.use(plugin);
+  GlobalVue.use(plugin);
 }
 
 // It's possible to expose named exports when writing components that can

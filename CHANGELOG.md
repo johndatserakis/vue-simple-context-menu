@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.6
+- Adding the option to add a custom class to each option object. Thanks for the suggestion @geri777.
+
 ## 3.1.3
 - Fixing emitting to use kebab-case
 

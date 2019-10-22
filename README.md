@@ -61,29 +61,29 @@ to allow to be clicked. In this case, `items` is an array of objects.
 Each item has a click event that ties to a function. See the demo for a full example (with multiple menus as well). -->
 
 <div class="item-wrapper">
-    <div v-for="item in items" @click.prevent.stop="handleClick($event, item)" class="item-wrapper__item">
-        {{item.name}}
-    </div>
+  <div v-for="item in items" @click.prevent.stop="handleClick($event, item)" class="item-wrapper__item">
+    {{item.name}}
+  </div>
 </div>
 
 <!-- Make sure you add the `ref` attribute, as that is what gives you the ability
 to open the menu. -->
 
 <vue-simple-context-menu
-    :elementId="'myUniqueId'"
-    :options="options"
-    :ref="'vueSimpleContextMenu'"
-    @option-clicked="optionClicked">
-</vue-simple-context-menu>
+  :elementId="'myUniqueId'"
+  :options="options"
+  :ref="'vueSimpleContextMenu'"
+  @option-clicked="optionClicked"
+/>
 
 <!-- The click-handler function -->
 handleClick (event, item) {
-    this.$refs.vueSimpleContextMenu.showMenu(event, item)
+  this.$refs.vueSimpleContextMenu.showMenu(event, item)
 }
 
 <!-- And for capturing the event -->
 optionClicked (event) {
-    window.alert(JSON.stringify(event))
+  window.alert(JSON.stringify(event))
 }
 ```
 
@@ -97,6 +97,8 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 |---------|-------|--------------------------------|---|
 | elementId | String | Unique String that acts as the id of your menu. | Yes |
 | options | Array | Array of menu options to show. Component will use the `name` parameter as the label. | Yes |
+| options.name | Array | Label for the option. | Yes |
+| options.customClass | String | A custom class that will be applied to the option. | No |
 | ref | String | Unique String that allows you to show the menu on command. | Yes |
 
 ### Methods
@@ -115,13 +117,13 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 ```sass
 .vue-simple-context-menu {
-    &--active {
-    }
+  &--active {
+  }
 
-    &__item {
-        &:hover {
-        }
+  &__item {
+    &:hover {
     }
+  }
 }
 ```
 
