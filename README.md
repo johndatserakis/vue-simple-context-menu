@@ -98,7 +98,7 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 | elementId | String | Unique String that acts as the id of your menu. | Yes |
 | options | Array | Array of menu options to show. Component will use the `name` parameter as the label. | Yes |
 | options.name | Array | Label for the option. | Yes |
-| options.customClass | String | A custom class that will be applied to the option. | No |
+| options.class | String | A custom class that will be applied to the option. | No |
 | ref | String | Unique String that allows you to show the menu on command. | Yes |
 
 ### Methods
