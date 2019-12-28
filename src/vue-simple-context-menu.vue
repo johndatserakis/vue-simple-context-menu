@@ -90,6 +90,16 @@ export default {
         option: option
       })
     }
+  },
+  mounted () {
+    document.body.addEventListener('keyup', e => {
+      if (e.keyCode === 27) {
+        this.hideContextMenu()
+      }
+    })
+  },
+  beforeDestroy () {
+    document.removeEventListener('keyup', this.hideContextMenu());
   }
 }
 </script>

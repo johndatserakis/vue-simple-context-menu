@@ -1,5 +1,8 @@
 # CHANGELOG.md
 
+## 3.1.8
+- Added ability to hit escape to close popup window.
+
 ## 3.1.7
 - Adding the option to add a custom class to each option object. Thanks for the suggestion @geri777.
 

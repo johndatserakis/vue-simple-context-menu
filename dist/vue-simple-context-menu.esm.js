@@ -70,6 +70,18 @@ var script = {
         option: option
       });
     }
+  },
+  mounted: function mounted () {
+    var this$1 = this;
+
+    document.body.addEventListener('keyup', function (e) {
+      if (e.keyCode === 27) {
+        this$1.hideContextMenu();
+      }
+    });
+  },
+  beforeDestroy: function beforeDestroy () {
+    document.removeEventListener('keyup', this.hideContextMenu());
   }
 };
 
