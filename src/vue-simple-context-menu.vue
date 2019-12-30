@@ -89,17 +89,18 @@ export default {
         item: this.item,
         option: option
       })
+    },
+    onEscKeyRelease (event) {
+      if (event.keyCode === 27) {
+        this.hideContextMenu();
+      }
     }
   },
   mounted () {
-    document.body.addEventListener('keyup', e => {
-      if (e.keyCode === 27) {
-        this.hideContextMenu()
-      }
-    })
+    document.body.addEventListener('keyup', this.onEscKeyRelease);
   },
   beforeDestroy () {
-    document.removeEventListener('keyup', this.hideContextMenu());
+    document.removeEventListener('keyup', this.onEscKeyRelease);
   }
 }
 </script>
