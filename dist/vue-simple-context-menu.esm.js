@@ -69,19 +69,18 @@ var script = {
         item: this.item,
         option: option
       });
+    },
+    onEscKeyRelease: function onEscKeyRelease (event) {
+      if (event.keyCode === 27) {
+        this.hideContextMenu();
+      }
     }
   },
   mounted: function mounted () {
-    var this$1 = this;
-
-    document.body.addEventListener('keyup', function (e) {
-      if (e.keyCode === 27) {
-        this$1.hideContextMenu();
-      }
-    });
+    document.body.addEventListener('keyup', this.onEscKeyRelease);
   },
   beforeDestroy: function beforeDestroy () {
-    document.removeEventListener('keyup', this.hideContextMenu());
+    document.removeEventListener('keyup', this.onEscKeyRelease);
   }
 };
 
