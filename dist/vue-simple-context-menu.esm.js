@@ -40,16 +40,16 @@ var script = {
         menu.removeAttribute("style");
       }
 
-      if ((this.menuWidth + event.pageX) >= window.innerWidth) {
-        menu.style.left = (event.pageX - this.menuWidth + 2) + "px";
+      if ((this.menuWidth + event.clientX) >= window.innerWidth) {
+        menu.style.left = (event.clientX - this.menuWidth + 2) + "px";
       } else {
-        menu.style.left = (event.pageX - 2) + "px";
+        menu.style.left = (event.clientX - 2) + "px";
       }
 
-      if ((this.menuHeight + event.pageY) >= window.innerHeight) {
-        menu.style.top = (event.pageY - this.menuHeight + 2) + "px";
+      if ((this.menuHeight + event.clientY) >= window.innerHeight) {
+        menu.style.top = (event.clientY - this.menuHeight + 2) + "px";
       } else {
-        menu.style.top = (event.pageY - 2) + "px";
+        menu.style.top = (event.clientY - 2) + "px";
       }
 
       menu.classList.add('vue-simple-context-menu--active');
