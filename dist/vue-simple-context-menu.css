@@ -5,7 +5,7 @@
   padding: 0;
   display: none;
   list-style: none;
-  position: fixed;
+  position: absolute;
   z-index: 1000000;
   background-color: #ecf0f1;
   border-bottom-width: 0px;
