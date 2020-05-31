@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: fixed; top: 0; left: 0; ">
     <ul
       :id="elementId"
       class="vue-simple-context-menu"
