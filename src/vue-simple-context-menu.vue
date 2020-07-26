@@ -8,7 +8,7 @@
       <li
         v-for="(option, index) in options"
         :key="index"
-        @click="optionClicked(option)"
+        @click.stop="optionClicked(option)"
         class="vue-simple-context-menu__item"
         :class="option.class"
       >
