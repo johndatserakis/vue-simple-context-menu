@@ -206,6 +206,7 @@
               class: option.class,
               on: {
                 click: function($event) {
+                  $event.stopPropagation();
                   return _vm.optionClicked(option)
                 }
               }
