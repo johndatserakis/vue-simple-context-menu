@@ -10,7 +10,7 @@
         :key="index"
         @click.stop="optionClicked(option)"
         class="vue-simple-context-menu__item"
-        :class="option.class"
+        :class="[option.class, (option.type === 'divider' ? 'vue-simple-context-menu__divider' : '')]"
       >
         {{option.name}}
       </li>
@@ -144,6 +144,14 @@ $black: #333;
       background-color: $blue;
       color: $white;
     }
+  }
+
+  &__divider {
+    height: 10px;
+    background-color: $grey;
+    padding: 4px 0;
+    background-clip: content-box;
+    pointer-events: none;
   }
 
   // Have to use the element so we can make use of `first-of-type` and
