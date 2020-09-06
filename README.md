@@ -95,11 +95,12 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 | prop    | type  | description | required |
 |---------|-------|--------------------------------|---|
-| elementId | String | Unique String that acts as the id of your menu. | Yes |
-| options | Array | Array of menu options to show. Component will use the `name` parameter as the label. | Yes |
-| options.name | Array | Label for the option. | Yes |
-| options.class | String | A custom class that will be applied to the option. | No |
-| ref | String | Unique String that allows you to show the menu on command. | Yes |
+| elementId     | String | Unique String that acts as the id of your menu.                                                                               | Yes |
+| options       | Array  | Array of menu options to show. Component will use the `name` parameter as the label.                                          | Yes |
+| options.name  | Array  | Label for the option.                                                                                                         | Yes |
+| options.class | String | A custom class that will be applied to the option.                                                                            | No |
+| options.type  | String | Only one possible value at the moment - `divider`. Pass this to set the object as a divider.                                  | No |
+| ref           | String | Unique String that allows you to show the menu on command.                                                                    | Yes |
 
 ### Methods
 
@@ -115,7 +116,7 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 ### SASS Structure
 
-```sass
+```scss
 .vue-simple-context-menu {
   &--active {
   }
@@ -124,6 +125,8 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
     &:hover {
     }
   }
+
+  &__divider {}
 }
 ```
 

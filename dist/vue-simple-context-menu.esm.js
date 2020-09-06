@@ -197,7 +197,12 @@ var __vue_render__ = function() {
           {
             key: index,
             staticClass: "vue-simple-context-menu__item",
-            class: option.class,
+            class: [
+              option.class,
+              option.type === "divider"
+                ? "vue-simple-context-menu__divider"
+                : ""
+            ],
             on: {
               click: function($event) {
                 $event.stopPropagation();

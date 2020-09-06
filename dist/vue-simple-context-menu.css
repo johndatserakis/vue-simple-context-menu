@@ -27,6 +27,13 @@
   background-color: #007aff;
   color: #fff;
 }
+.vue-simple-context-menu__divider {
+  height: 10px;
+  background-color: #c0cdd1;
+  padding: 4px 0;
+  background-clip: content-box;
+  pointer-events: none;
+}
 .vue-simple-context-menu li:first-of-type {
   margin-top: 4px;
 }

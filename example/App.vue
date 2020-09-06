@@ -164,6 +164,9 @@ export default {
           slug: 'duplicate'
         },
         {
+          type: 'divider'
+        },
+        {
           name: 'Edit',
           slug: 'edit'
         },
