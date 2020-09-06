@@ -125,6 +125,8 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
     &:hover {
     }
   }
+
+  &__divider {}
 }
 ```
 
