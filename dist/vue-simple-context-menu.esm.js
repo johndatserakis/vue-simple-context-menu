@@ -59,6 +59,7 @@ var script = {
       if (element) {
         element.classList.remove('vue-simple-context-menu--active');
       }
+      this.$emit('menu-hided');
     },
     onClickOutside: function onClickOutside () {
       this.hideContextMenu();
@@ -232,15 +233,19 @@ __vue_render__._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var component = normalizeComponent_1(
+  var __vue_component__ = /*#__PURE__*/normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
     __vue_scope_id__,
     __vue_is_functional_template__,
     __vue_module_identifier__,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -251,7 +256,7 @@ __vue_render__._withStripped = true;
 function install (Vue) {
   if (install.installed) { return; }
   install.installed = true;
-  Vue.component('VueSimpleContextMenu', component);
+  Vue.component('VueSimpleContextMenu', __vue_component__);
 }
 
 // Create module definition for Vue.use()
@@ -274,5 +279,5 @@ if (GlobalVue) {
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
 // export const RollupDemoDirective = component;
 
-export default component;
+export default __vue_component__;
 export { install };
