@@ -28,7 +28,8 @@
   color: #fff;
 }
 .vue-simple-context-menu__divider {
-  height: 10px;
+  box-sizing: content-box;
+  height: 2px;
   background-color: #c0cdd1;
   padding: 4px 0;
   background-clip: content-box;
