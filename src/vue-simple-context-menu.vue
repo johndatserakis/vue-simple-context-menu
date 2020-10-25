@@ -147,7 +147,8 @@ $black: #333;
   }
 
   &__divider {
-    height: 10px;
+    box-sizing: content-box;
+    height: 2px;
     background-color: $grey;
     padding: 4px 0;
     background-clip: content-box;
