@@ -171,7 +171,7 @@ export default {
           slug: 'edit'
         },
         {
-          name: 'Delete',
+          name: '<em>Delete</em>',
           slug: 'delete'
         }
       ],

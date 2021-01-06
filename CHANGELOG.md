@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## 3.4.0
+
+- Add support for HTML content in `option.name`. Thank you @mikeerickson.
+
 ## 3.3.2
 
 - Fixed `border-box` issue with the divider. Thank you @mikeerickson.
