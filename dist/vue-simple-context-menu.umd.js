@@ -206,11 +206,7 @@
                 }
               }
             },
-            [
-              _c("span", { domProps: { innerHTML: _vm._s(option.name) } }, [
-                _vm._v("1")
-              ])
-            ]
+            [_c("span", { domProps: { innerHTML: _vm._s(option.name) } })]
           )
         }),
         0

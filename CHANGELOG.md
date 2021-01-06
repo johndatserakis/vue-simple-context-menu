@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 3.4.0
+## 3.4.1
 
 - Add support for HTML content in `option.name`. Thank you @mikeerickson.
 
