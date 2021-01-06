@@ -12,7 +12,7 @@
         class="vue-simple-context-menu__item"
         :class="[option.class, (option.type === 'divider' ? 'vue-simple-context-menu__divider' : '')]"
       >
-        <span v-html="option.name">1</span>
+        <span v-html="option.name"></span>
       </li>
     </ul>
   </div>
