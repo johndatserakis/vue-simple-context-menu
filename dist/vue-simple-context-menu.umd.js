@@ -11,7 +11,7 @@
   Vue.use(vClickOutside);
 
   var script = {
-    name: 'VueSimpleContextMenu',
+    name: "VueSimpleContextMenu",
     props: {
       elementId: {
         type: String,
@@ -22,20 +22,20 @@
         required: true
       }
     },
-    data: function data () {
+    data: function data() {
       return {
         item: null,
         menuWidth: null,
         menuHeight: null
-      }
+      };
     },
     methods: {
-      showMenu: function showMenu (event, item) {
+      showMenu: function showMenu(event, item) {
         this.item = item;
 
         var menu = document.getElementById(this.elementId);
         if (!menu) {
-          return
+          return;
         }
 
         if (!this.menuWidth || !this.menuHeight) {
@@ -46,47 +46,48 @@
           menu.removeAttribute("style");
         }
 
-        if ((this.menuWidth + event.pageX) >= window.innerWidth) {
-          menu.style.left = (event.pageX - this.menuWidth + 2) + "px";
+        if (this.menuWidth + event.pageX >= window.innerWidth) {
+          menu.style.left = event.pageX - this.menuWidth + 2 + "px";
         } else {
-          menu.style.left = (event.pageX - 2) + "px";
+          menu.style.left = event.pageX - 2 + "px";
         }
 
-        if ((this.menuHeight + event.pageY) >= window.innerHeight) {
-          menu.style.top = (event.pageY - this.menuHeight + 2) + "px";
+        if (this.menuHeight + event.pageY >= window.innerHeight) {
+          menu.style.top = event.pageY - this.menuHeight + 2 + "px";
         } else {
-          menu.style.top = (event.pageY - 2) + "px";
+          menu.style.top = event.pageY - 2 + "px";
         }
 
-        menu.classList.add('vue-simple-context-menu--active');
+        menu.classList.add("vue-simple-context-menu--active");
       },
-      hideContextMenu: function hideContextMenu () {
+      hideContextMenu: function hideContextMenu() {
         var element = document.getElementById(this.elementId);
         if (element) {
-          element.classList.remove('vue-simple-context-menu--active');
+          element.classList.remove("vue-simple-context-menu--active");
+          this.$emit("menu-closed");
         }
       },
-      onClickOutside: function onClickOutside () {
+      onClickOutside: function onClickOutside() {
         this.hideContextMenu();
       },
-      optionClicked: function optionClicked (option) {
+      optionClicked: function optionClicked(option) {
         this.hideContextMenu();
-        this.$emit('option-clicked', {
+        this.$emit("option-clicked", {
           item: this.item,
           option: option
         });
       },
-      onEscKeyRelease: function onEscKeyRelease (event) {
+      onEscKeyRelease: function onEscKeyRelease(event) {
         if (event.keyCode === 27) {
           this.hideContextMenu();
         }
       }
     },
-    mounted: function mounted () {
-      document.body.addEventListener('keyup', this.onEscKeyRelease);
+    mounted: function mounted() {
+      document.body.addEventListener("keyup", this.onEscKeyRelease);
     },
-    beforeDestroy: function beforeDestroy () {
-      document.removeEventListener('keyup', this.onEscKeyRelease);
+    beforeDestroy: function beforeDestroy() {
+      document.removeEventListener("keyup", this.onEscKeyRelease);
     }
   };
 
