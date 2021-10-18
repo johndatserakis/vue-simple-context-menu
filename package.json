@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-context-menu",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Simple context-menu component built for Vue. Works well with both left and right clicks. Nothing too fancy, just works and is simple to use.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
@@ -31,8 +31,8 @@
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-simple-context-menu.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-simple-context-menu.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-simple-context-menu.min.js",
-    "build:library": "rm -rf ./dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
-    "build:example": "rm -rf ./docs && cross-env NODE_ENV=production webpack --progress --hide-modules --mode production",
+    "build:library": "rimraf dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
+    "build:example": "rimraf docs && cross-env NODE_ENV=production webpack --progress --hide-modules --mode production",
     "test": "jest"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "@babel/preset-env": "^7.4.5",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^7.0.0-bridge.0",
+    "rimraf": "^3.0.2",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
