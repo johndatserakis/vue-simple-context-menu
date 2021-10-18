@@ -77,7 +77,7 @@ export default {
       menu.classList.add("vue-simple-context-menu--active");
     },
     hideContextMenu() {
-      let element = document.getElementById(this.elementId);
+      const element = document.getElementById(this.elementId);
       if (element) {
         element.classList.remove("vue-simple-context-menu--active");
         this.$emit("menu-closed");
