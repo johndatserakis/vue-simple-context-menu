@@ -33,7 +33,11 @@ Or you can include it through the browser at the bottom of your page along with 
 ```html
 <script src="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.css"
+/>
 ```
 
 ### About
@@ -44,44 +48,49 @@ A nice feature that comes baked in is the menu placement after a click - it sits
 
 ### Usage Example
 
-```html
-<!-- css import for when you want to import the component css into your css file/files  -->
-@import '/path/to/node_modules/vue-simple-context-menu.css';
+```css
+/* css import for when you want to import the component css into your css file/files */
+@import "/path/to/node_modules/vue-simple-context-menu.css";
+```
 
-<!-- css import for when you're importing the css directly in your js  -->
-import 'vue-simple-context-menu/dist/vue-simple-context-menu.css'
+```js
+// css import for when you're importing the css directly in your js
+import "vue-simple-context-menu/dist/vue-simple-context-menu.css";
+import VueSimpleContextMenu from "vue-simple-context-menu";
 
-import VueSimpleContextMenu from 'vue-simple-context-menu'
-Vue.component('vue-simple-context-menu', VueSimpleContextMenu)
+Vue.component("vue-simple-context-menu", VueSimpleContextMenu);
 ```
 
 ```html
 <!-- This is a basic use case where you have an array of items that you want
 to allow to be clicked. In this case, `items` is an array of objects.
 Each item has a click event that ties to a function. See the demo for a full example (with multiple menus as well). -->
-
 <div class="item-wrapper">
-  <div v-for="item in items" @click.prevent.stop="handleClick($event, item)" class="item-wrapper__item">
+  <div
+    v-for="item in items"
+    @click.prevent.stop="handleClick($event, item)"
+    class="item-wrapper__item"
+  >
     {{item.name}}
   </div>
 </div>
 
 <!-- Make sure you add the `ref` attribute, as that is what gives you the ability
 to open the menu. -->
-
 <vue-simple-context-menu
   :elementId="'myUniqueId'"
   :options="options"
   :ref="'vueSimpleContextMenu'"
   @option-clicked="optionClicked"
 />
+```
 
-<!-- The click-handler function -->
+```js
 handleClick (event, item) {
   this.$refs.vueSimpleContextMenu.showMenu(event, item)
 }
 
-<!-- And for capturing the event -->
+
 optionClicked (event) {
   window.alert(JSON.stringify(event))
 }
@@ -93,26 +102,27 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 
 ### Props
 
-| prop    | type  | description | required |
-|---------|-------|--------------------------------|---|
-| elementId     | String | Unique String that acts as the id of your menu.                                                                               | Yes |
-| options       | Array  | Array of menu options to show. Component will use the `name` parameter as the label.                                          | Yes |
-| options.name  | Array  | Label for the option.                                                                                                         | Yes |
-| options.class | String | A custom class that will be applied to the option.                                                                            | No |
-| options.type  | String | Only one possible value at the moment - `divider`. Pass this to set the object as a divider.                                  | No |
-| ref           | String | Unique String that allows you to show the menu on command.                                                                    | Yes |
+| prop            | type   | description                                                                                  | required |
+| --------------- | ------ | -------------------------------------------------------------------------------------------- | -------- |
+| `elementId`     | String | Unique String that acts as the id of your menu.                                              | Yes      |
+| `options`       | Array  | Array of menu options to show. Component will use the `name` parameter as the label.         | Yes      |
+| `options.name`  | Array  | Label for the option.                                                                        | Yes      |
+| `options.class` | String | A custom class that will be applied to the option.                                           | No       |
+| `options.type`  | String | Only one possible value at the moment - `divider`. Pass this to set the object as a divider. | No       |
+| `ref`           | String | Unique String that allows you to show the menu on command.                                   | Yes      |
 
 ### Methods
 
-| method    | parameters  | description                    |
-|---------|-------|--------------------------------|
-| showMenu |event (MouseEvent), item (Object) | Used to show the menu. Make sure to pass a MouseEvent and an Object. |
+| method     | parameters                        | description                                                          |
+| ---------- | --------------------------------- | -------------------------------------------------------------------- |
+| `showMenu` | event (MouseEvent), item (Object) | Used to show the menu. Make sure to pass a MouseEvent and an Object. |
 
 ### Events
 
-| event    | value  | description                    |
-|---------|-------|--------------------------------|
-| option-clicked | Object | When a menu item is clicked the component will emit an event with a value containing the clicked item and the menu option that was clicked. Register for this event to capture the selection result. |
+| event            | value  | description                                                                                                                                                                                          |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `option-clicked` | Object | When a menu item is clicked the component will emit an event with a value containing the clicked item and the menu option that was clicked. Register for this event to capture the selection result. |
+| `menu-closed`    |        | Emitted when the menu is closed                                                                                                                                                                      |
 
 ### SASS Structure
 
@@ -126,13 +136,14 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
     }
   }
 
-  &__divider {}
+  &__divider {
+  }
 }
 ```
 
 ### Development
 
-``` bash
+```bash
 # install dependencies
 npm install
 
