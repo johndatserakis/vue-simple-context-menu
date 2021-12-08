@@ -122,7 +122,7 @@ $black: #333;
   padding: 0;
   display: none;
   list-style: none;
-  position: absolute;
+  position: fixed;
   z-index: 1000000;
   background-color: $light-grey;
   border-bottom-width: 0px;
