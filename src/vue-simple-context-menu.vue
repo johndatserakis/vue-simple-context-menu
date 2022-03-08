@@ -36,6 +36,12 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    overrideLeft: {
+      type: Number
+    },
+    overrideTop: {
+      type: Number
     }
   },
   data() {
@@ -57,22 +63,31 @@ export default {
       if (!this.menuWidth || !this.menuHeight) {
         menu.style.visibility = "hidden";
         menu.style.display = "block";
+        // menu.style.position = "fixed";
         this.menuWidth = menu.offsetWidth;
         this.menuHeight = menu.offsetHeight;
         menu.removeAttribute("style");
       }
-
-      if (this.menuWidth + event.pageX >= window.innerWidth) {
-        menu.style.left = event.pageX - this.menuWidth + 2 + "px";
-      } else {
-        menu.style.left = event.pageX - 2 + "px";
+      if (!this.overrideLeft && this.overrideLeft !== 0){
+        if (this.menuWidth + event.pageX >= window.innerWidth) {
+          menu.style.left = event.pageX - this.menuWidth + 2 + "px";
+        } else {
+          menu.style.left = event.pageX - 2 + "px";
+        }
+      }else{
+        menu.style.left = this.overrideLeft + "px";
+      }
+      if (!this.overrideTop && this.overrideTop !== 0){
+        if (this.menuHeight + event.pageY >= window.innerHeight) {
+          menu.style.top = event.pageY - this.menuHeight + 2 + "px";
+        } else {
+          menu.style.top = event.pageY - 2 + "px";
+        }
+      }else{
+        menu.style.top = this.overrideTop + "px";
       }
 
-      if (this.menuHeight + event.pageY >= window.innerHeight) {
-        menu.style.top = event.pageY - this.menuHeight + 2 + "px";
-      } else {
-        menu.style.top = event.pageY - 2 + "px";
-      }
+      
 
       menu.classList.add("vue-simple-context-menu--active");
     },
@@ -134,6 +149,7 @@ $black: #333;
 
   &--active {
     display: block;
+    position: fixed;
   }
 
   &__item {
