@@ -1,5 +1,5 @@
 import vue from 'rollup-plugin-vue';
-import css from 'rollup-plugin-css-only'
+import scss from 'rollup-plugin-scss'
 import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
@@ -15,18 +15,18 @@ const config = {
     exports: 'named',
     globals: {
       'vue': 'Vue',
-      'v-click-outside': 'vClickOutside'
+      'click-outside-vue3': 'vClickOutside'
     }
   },
   plugins: [
-    commonjs(),
-    resolve(),
     vue({
       css: false,
       compileTemplate: true,
     }),
-    css({ output: 'dist/vue-simple-context-menu.css' }),
+    scss({ output: 'dist/vue-simple-context-menu.css' }),
+    resolve(),
     buble(),
+    commonjs(),
   ],
   external: ['vue', 'v-click-outside']
 };

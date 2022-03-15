@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import clickOutside from "click-outside-vue3";
+import vClickOutside from "click-outside-vue3";
 
 export default {
   name: "VueSimpleContextMenu",
@@ -41,7 +41,7 @@ export default {
     'option-clicked'
   ],
   directives: {
-    'click-outside': clickOutside
+    'click-outside': vClickOutside
   },
   data() {
     return {
