@@ -41,7 +41,7 @@ export default {
     'option-clicked'
   ],
   directives: {
-    'click-outside': vClickOutside
+    'click-outside': vClickOutside.directive
   },
   data() {
     return {

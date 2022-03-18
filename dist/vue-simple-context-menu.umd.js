@@ -32,7 +32,7 @@
 	    'option-clicked'
 	  ],
 	  directives: {
-	    'click-outside': vClickOutside_umd
+	    'click-outside': vClickOutside_umd.directive
 	  },
 	  data: function data() {
 	    return {
