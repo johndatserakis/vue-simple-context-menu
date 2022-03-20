@@ -2,7 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require("vue-loader");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './example/main.js',
@@ -16,14 +17,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
           'css-loader'
         ],
       },
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
           'css-loader',
           'sass-loader'
         ],
@@ -31,32 +36,16 @@ module.exports = {
       {
         test: /\.sass$/,
         use: [
-          'vue-style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
           'css-loader',
           'sass-loader?indentedSyntax'
         ],
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-          // other vue-loader options go here
-        }
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
@@ -74,7 +63,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm-bundler.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -102,6 +91,9 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
     new HtmlWebpackPlugin({
       title: 'vue-simple-context-menu',
       template: './example/index.html'

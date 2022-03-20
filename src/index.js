@@ -1,11 +1,11 @@
 // Import vue component
 import component from './vue-simple-context-menu.vue';
 
-// install function executed by Vue.use()
-export function install (Vue) {
+// install function executed by app.use()
+export function install (app) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('VueSimpleContextMenu', component);
+  app.component('VueSimpleContextMenu', component);
 }
 
 // Create module definition for Vue.use()

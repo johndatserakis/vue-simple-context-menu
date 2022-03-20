@@ -1,283 +1,175 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue'), require('v-click-outside')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'vue', 'v-click-outside'], factory) :
-  (global = global || self, factory(global.VueSimpleContextMenu = {}, global.Vue, global.vClickOutside));
-}(this, (function (exports, Vue, vClickOutside) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
+	(global = global || self, factory(global.VueSimpleContextMenu = {}, global.Vue));
+}(this, (function (exports, vue) { 'use strict';
 
-  Vue = Vue && Object.prototype.hasOwnProperty.call(Vue, 'default') ? Vue['default'] : Vue;
-  vClickOutside = vClickOutside && Object.prototype.hasOwnProperty.call(vClickOutside, 'default') ? vClickOutside['default'] : vClickOutside;
+	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-  //
-  Vue.use(vClickOutside);
+	function createCommonjsModule(fn, module) {
+		return module = { exports: {} }, fn(module, module.exports), module.exports;
+	}
 
-  var script = {
-    name: "VueSimpleContextMenu",
-    props: {
-      elementId: {
-        type: String,
-        required: true
-      },
-      options: {
-        type: Array,
-        required: true
-      }
-    },
-    data: function data() {
-      return {
-        item: null,
-        menuWidth: null,
-        menuHeight: null
-      };
-    },
-    methods: {
-      showMenu: function showMenu(event, item) {
-        this.item = item;
+	var vClickOutside_umd = createCommonjsModule(function (module, exports) {
+	!function(e,n){module.exports=n();}(commonjsGlobal,function(){var e="__v-click-outside",n="undefined"!=typeof window,t="undefined"!=typeof navigator,r=n&&("ontouchstart"in window||t&&navigator.msMaxTouchPoints>0)?["touchstart"]:["click"],i=function(e){var n=e.event,t=e.handler;(0, e.middleware)(n)&&t(n);},a=function(n,t){var a=function(e){var n="function"==typeof e;if(!n&&"object"!=typeof e){ throw new Error("v-click-outside: Binding value must be a function or an object"); }return {handler:n?e:e.handler,middleware:e.middleware||function(e){return e},events:e.events||r,isActive:!(!1===e.isActive),detectIframe:!(!1===e.detectIframe),capture:Boolean(e.capture)}}(t.value),o=a.handler,d=a.middleware,c=a.detectIframe,u=a.capture;if(a.isActive){if(n[e]=a.events.map(function(e){return {event:e,srcTarget:document.documentElement,handler:function(e){return function(e){var n=e.el,t=e.event,r=e.handler,a=e.middleware,o=t.path||t.composedPath&&t.composedPath();(o?o.indexOf(n)<0:!n.contains(t.target))&&i({event:t,handler:r,middleware:a});}({el:n,event:e,handler:o,middleware:d})},capture:u}}),c){var l={event:"blur",srcTarget:window,handler:function(e){return function(e){var n=e.el,t=e.event,r=e.handler,a=e.middleware;setTimeout(function(){var e=document.activeElement;e&&"IFRAME"===e.tagName&&!n.contains(e)&&i({event:t,handler:r,middleware:a});},0);}({el:n,event:e,handler:o,middleware:d})},capture:u};n[e]=[].concat(n[e],[l]);}n[e].forEach(function(t){var r=t.event,i=t.srcTarget,a=t.handler;return setTimeout(function(){n[e]&&i.addEventListener(r,a,u);},0)});}},o=function(n){(n[e]||[]).forEach(function(e){return e.srcTarget.removeEventListener(e.event,e.handler,e.capture)}),delete n[e];},d=n?{beforeMount:a,updated:function(e,n){var t=n.value,r=n.oldValue;JSON.stringify(t)!==JSON.stringify(r)&&(o(e),a(e,{value:t}));},unmounted:o}:{};return {install:function(e){e.directive("click-outside",d);},directive:d}});
 
-        var menu = document.getElementById(this.elementId);
-        if (!menu) {
-          return;
-        }
+	});
 
-        if (!this.menuWidth || !this.menuHeight) {
-          menu.style.visibility = "hidden";
-          menu.style.display = "block";
-          this.menuWidth = menu.offsetWidth;
-          this.menuHeight = menu.offsetHeight;
-          menu.removeAttribute("style");
-        }
+	var script = {
+	  name: "VueSimpleContextMenu",
+	  props: {
+	    elementId: {
+	      type: String,
+	      required: true
+	    },
+	    options: {
+	      type: Array,
+	      required: true
+	    }
+	  },
+	  emits: [
+	    'menu-closed',
+	    'option-clicked'
+	  ],
+	  directives: {
+	    'click-outside': vClickOutside_umd.directive
+	  },
+	  data: function data() {
+	    return {
+	      item: null,
+	      menuWidth: null,
+	      menuHeight: null
+	    };
+	  },
+	  methods: {
+	    showMenu: function showMenu(event, item) {
+	      this.item = item;
 
-        if (this.menuWidth + event.pageX >= window.innerWidth) {
-          menu.style.left = event.pageX - this.menuWidth + 2 + "px";
-        } else {
-          menu.style.left = event.pageX - 2 + "px";
-        }
+	      var menu = document.getElementById(this.elementId);
+	      if (!menu) {
+	        return;
+	      }
 
-        if (this.menuHeight + event.pageY >= window.innerHeight) {
-          menu.style.top = event.pageY - this.menuHeight + 2 + "px";
-        } else {
-          menu.style.top = event.pageY - 2 + "px";
-        }
+	      if (!this.menuWidth || !this.menuHeight) {
+	        menu.style.visibility = "hidden";
+	        menu.style.display = "block";
+	        this.menuWidth = menu.offsetWidth;
+	        this.menuHeight = menu.offsetHeight;
+	        menu.removeAttribute("style");
+	      }
 
-        menu.classList.add("vue-simple-context-menu--active");
-      },
-      hideContextMenu: function hideContextMenu() {
-        var element = document.getElementById(this.elementId);
-        if (element) {
-          element.classList.remove("vue-simple-context-menu--active");
-          this.$emit("menu-closed");
-        }
-      },
-      onClickOutside: function onClickOutside() {
-        this.hideContextMenu();
-      },
-      optionClicked: function optionClicked(option) {
-        this.hideContextMenu();
-        this.$emit("option-clicked", {
-          item: this.item,
-          option: option
-        });
-      },
-      onEscKeyRelease: function onEscKeyRelease(event) {
-        if (event.keyCode === 27) {
-          this.hideContextMenu();
-        }
-      }
-    },
-    mounted: function mounted() {
-      document.body.addEventListener("keyup", this.onEscKeyRelease);
-    },
-    beforeDestroy: function beforeDestroy() {
-      document.removeEventListener("keyup", this.onEscKeyRelease);
-    }
-  };
+	      if (this.menuWidth + event.pageX >= window.innerWidth) {
+	        menu.style.left = event.pageX - this.menuWidth + 2 + "px";
+	      } else {
+	        menu.style.left = event.pageX - 2 + "px";
+	      }
 
-  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-      if (typeof shadowMode !== 'boolean') {
-          createInjectorSSR = createInjector;
-          createInjector = shadowMode;
-          shadowMode = false;
-      }
-      // Vue.extend constructor export interop.
-      var options = typeof script === 'function' ? script.options : script;
-      // render functions
-      if (template && template.render) {
-          options.render = template.render;
-          options.staticRenderFns = template.staticRenderFns;
-          options._compiled = true;
-          // functional template
-          if (isFunctionalTemplate) {
-              options.functional = true;
-          }
-      }
-      // scopedId
-      if (scopeId) {
-          options._scopeId = scopeId;
-      }
-      var hook;
-      if (moduleIdentifier) {
-          // server build
-          hook = function (context) {
-              // 2.3 injection
-              context =
-                  context || // cached call
-                      (this.$vnode && this.$vnode.ssrContext) || // stateful
-                      (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-              // 2.2 with runInNewContext: true
-              if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                  context = __VUE_SSR_CONTEXT__;
-              }
-              // inject component styles
-              if (style) {
-                  style.call(this, createInjectorSSR(context));
-              }
-              // register component module identifier for async chunk inference
-              if (context && context._registeredComponents) {
-                  context._registeredComponents.add(moduleIdentifier);
-              }
-          };
-          // used by ssr in case component is cached and beforeCreate
-          // never gets called
-          options._ssrRegister = hook;
-      }
-      else if (style) {
-          hook = shadowMode
-              ? function (context) {
-                  style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-              }
-              : function (context) {
-                  style.call(this, createInjector(context));
-              };
-      }
-      if (hook) {
-          if (options.functional) {
-              // register for functional component in vue file
-              var originalRender = options.render;
-              options.render = function renderWithStyleInjection(h, context) {
-                  hook.call(context);
-                  return originalRender(h, context);
-              };
-          }
-          else {
-              // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
-              options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-          }
-      }
-      return script;
-  }
+	      if (this.menuHeight + event.pageY >= window.innerHeight) {
+	        menu.style.top = event.pageY - this.menuHeight + 2 + "px";
+	      } else {
+	        menu.style.top = event.pageY - 2 + "px";
+	      }
 
-  /* script */
-  var __vue_script__ = script;
-  /* template */
-  var __vue_render__ = function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c("div", [
-      _c(
-        "ul",
-        {
-          directives: [
-            {
-              name: "click-outside",
-              rawName: "v-click-outside",
-              value: _vm.onClickOutside,
-              expression: "onClickOutside"
-            }
-          ],
-          staticClass: "vue-simple-context-menu",
-          attrs: { id: _vm.elementId }
-        },
-        _vm._l(_vm.options, function(option, index) {
-          return _c(
-            "li",
-            {
-              key: index,
-              staticClass: "vue-simple-context-menu__item",
-              class: [
-                option.class,
-                option.type === "divider"
-                  ? "vue-simple-context-menu__divider"
-                  : ""
-              ],
-              on: {
-                click: function($event) {
-                  $event.stopPropagation();
-                  return _vm.optionClicked(option)
-                }
-              }
-            },
-            [_c("span", { domProps: { innerHTML: _vm._s(option.name) } })]
-          )
-        }),
-        0
-      )
-    ])
-  };
-  var __vue_staticRenderFns__ = [];
-  __vue_render__._withStripped = true;
+	      menu.classList.add("vue-simple-context-menu--active");
+	    },
+	    hideContextMenu: function hideContextMenu() {
+	      var element = document.getElementById(this.elementId);
+	      if (element) {
+	        element.classList.remove("vue-simple-context-menu--active");
+	        this.$emit("menu-closed");
+	      }
+	    },
+	    onClickOutside: function onClickOutside() {
+	      this.hideContextMenu();
+	    },
+	    optionClicked: function optionClicked(option) {
+	      this.hideContextMenu();
+	      this.$emit("option-clicked", {
+	        item: this.item,
+	        option: option
+	      });
+	    },
+	    onEscKeyRelease: function onEscKeyRelease(event) {
+	      if (event.keyCode === 27) {
+	        this.hideContextMenu();
+	      }
+	    }
+	  },
+	  mounted: function mounted() {
+	    document.body.addEventListener("keyup", this.onEscKeyRelease);
+	  },
+	  beforeUnmount: function beforeUnmount() {
+	    document.removeEventListener("keyup", this.onEscKeyRelease);
+	  }
+	};
 
-    /* style */
-    var __vue_inject_styles__ = undefined;
-    /* scoped */
-    var __vue_scope_id__ = undefined;
-    /* module identifier */
-    var __vue_module_identifier__ = undefined;
-    /* functional template */
-    var __vue_is_functional_template__ = false;
-    /* style inject */
-    
-    /* style inject SSR */
-    
-    /* style inject shadow dom */
-    
+	var _hoisted_1 = ["id"];
+	var _hoisted_2 = ["onClick"];
+	var _hoisted_3 = ["innerHTML"];
 
-    
-    var __vue_component__ = /*#__PURE__*/normalizeComponent(
-      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-      __vue_inject_styles__,
-      __vue_script__,
-      __vue_scope_id__,
-      __vue_is_functional_template__,
-      __vue_module_identifier__,
-      false,
-      undefined,
-      undefined,
-      undefined
-    );
+	function render(_ctx, _cache, $props, $setup, $data, $options) {
+	  var _directive_click_outside = vue.resolveDirective("click-outside");
 
-  // Import vue component
+	  return (vue.openBlock(), vue.createElementBlock("div", null, [
+	    vue.withDirectives((vue.openBlock(), vue.createElementBlock("ul", {
+	      id: $props.elementId,
+	      class: "vue-simple-context-menu"
+	    }, [
+	      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($props.options, function (option, index) {
+	        return (vue.openBlock(), vue.createElementBlock("li", {
+	          key: index,
+	          onClick: vue.withModifiers(function ($event) { return ($options.optionClicked(option)); }, ["stop"]),
+	          class: vue.normalizeClass(["vue-simple-context-menu__item", [
+	          option.class,
+	          option.type === 'divider' ? 'vue-simple-context-menu__divider' : ''
+	        ]])
+	        }, [
+	          vue.createElementVNode("span", {
+	            innerHTML: option.name
+	          }, null, 8 /* PROPS */, _hoisted_3)
+	        ], 10 /* CLASS, PROPS */, _hoisted_2))
+	      }), 128 /* KEYED_FRAGMENT */))
+	    ], 8 /* PROPS */, _hoisted_1)), [
+	      [_directive_click_outside, $options.onClickOutside]
+	    ])
+	  ]))
+	}
 
-  // install function executed by Vue.use()
-  function install (Vue) {
-    if (install.installed) { return; }
-    install.installed = true;
-    Vue.component('VueSimpleContextMenu', __vue_component__);
-  }
+	script.render = render;
+	script.__file = "src/vue-simple-context-menu.vue";
 
-  // Create module definition for Vue.use()
-  var plugin = {
-    install: install,
-  };
+	// Import vue component
 
-  // To auto-install when vue is found
-  var GlobalVue = null;
-  if (typeof window !== 'undefined') {
-    GlobalVue = window.Vue;
-  } else if (typeof global !== 'undefined') {
-    GlobalVue = global.Vue;
-  }
-  if (GlobalVue) {
-    GlobalVue.use(plugin);
-  }
+	// install function executed by app.use()
+	function install (app) {
+	  if (install.installed) { return; }
+	  install.installed = true;
+	  app.component('VueSimpleContextMenu', script);
+	}
 
-  // It's possible to expose named exports when writing components that can
-  // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-  // export const RollupDemoDirective = component;
+	// Create module definition for Vue.use()
+	var plugin = {
+	  install: install,
+	};
 
-  exports.default = __vue_component__;
-  exports.install = install;
+	// To auto-install when vue is found
+	var GlobalVue = null;
+	if (typeof window !== 'undefined') {
+	  GlobalVue = window.Vue;
+	} else if (typeof global !== 'undefined') {
+	  GlobalVue = global.Vue;
+	}
+	if (GlobalVue) {
+	  GlobalVue.use(plugin);
+	}
 
-  Object.defineProperty(exports, '__esModule', { value: true });
+	// It's possible to expose named exports when writing components that can
+	// also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
+	// export const RollupDemoDirective = component;
+
+	exports.default = script;
+	exports.install = install;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

@@ -1,10 +1,9 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 
-import VueSimpleContextMenu from '../src/index.js'
-Vue.component('vue-simple-context-menu', VueSimpleContextMenu)
+const app = createApp(App)
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+import VueSimpleContextMenu from '../src/index.js'
+app.component('vue-simple-context-menu', VueSimpleContextMenu)
+
+app.mount('#app')

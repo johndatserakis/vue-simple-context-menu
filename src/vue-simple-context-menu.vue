@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import vClickOutside from "v-click-outside";
-Vue.use(vClickOutside);
+import vClickOutside from "click-outside-vue3";
 
 export default {
   name: "VueSimpleContextMenu",
@@ -37,6 +35,13 @@ export default {
       type: Array,
       required: true
     }
+  },
+  emits: [
+    'menu-closed',
+    'option-clicked'
+  ],
+  directives: {
+    'click-outside': vClickOutside.directive
   },
   data() {
     return {
@@ -102,7 +107,7 @@ export default {
   mounted() {
     document.body.addEventListener("keyup", this.onEscKeyRelease);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener("keyup", this.onEscKeyRelease);
   }
 };

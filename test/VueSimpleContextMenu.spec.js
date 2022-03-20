@@ -22,14 +22,14 @@ describe('VueSimpleContextMenu.vue', () => {
     }
 
     const wrapper = shallowMount(VueSimpleContextMenu, {
-      propsData: {
+      props: {
         elementId: initialPropsData.elementId,
         options: initialPropsData.options
       }
     })
 
     expect(wrapper.vm.elementId).toBe(initialPropsData.elementId)
-    expect(wrapper.vm.options).toBe(initialPropsData.options)
+    expect(wrapper.vm.options).toEqual(initialPropsData.options)
   })
 
   it('Shows menu on click', async () => {
