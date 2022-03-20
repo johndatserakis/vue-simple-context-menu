@@ -1,9 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-const app = createApp(App)
+const app = createApp(App);
 
-import VueSimpleContextMenu from '../src/index.js'
-app.component('vue-simple-context-menu', VueSimpleContextMenu)
+import VueSimpleContextMenu from '../src/index.js';
 
-app.mount('#app')
+app.component('vue-simple-context-menu', VueSimpleContextMenu);
+
+app.mount('#app');
