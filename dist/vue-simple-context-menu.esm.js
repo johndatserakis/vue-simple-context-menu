@@ -130,7 +130,6 @@ script.__file = "src/vue-simple-context-menu.vue";
 
 // Import vue component
 
-// Install function executed by app.use()
 function install(app) {
   if (install.installed) { return; }
 
@@ -138,7 +137,6 @@ function install(app) {
   app.component('VueSimpleContextMenu', script);
 }
 
-// Create module definition for Vue.use()
 var plugin = { install: install };
 
 // To auto-install when Vue is found

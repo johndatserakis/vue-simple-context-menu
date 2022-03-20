@@ -134,7 +134,6 @@
 
 	// Import vue component
 
-	// Install function executed by app.use()
 	function install(app) {
 	  if (install.installed) { return; }
 
@@ -142,7 +141,6 @@
 	  app.component('VueSimpleContextMenu', script);
 	}
 
-	// Create module definition for Vue.use()
 	var plugin = { install: install };
 
 	// To auto-install when Vue is found

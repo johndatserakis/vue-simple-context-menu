@@ -10,7 +10,10 @@ Simple context-menu component built for Vue. Works well with both left and right
   <img src="https://img.shields.io/twitter/url/https/github.com/johndatserakis/vue-simple-context-menu.svg?style=social" alt="Tweet"></a>
 </p>
 
-[View Demo](https://johndatserakis.github.io/vue-simple-context-menu/) | [GitHub](https://github.com/johndatserakis/vue-simple-context-menu) | [npm](https://www.npmjs.com/package/vue-simple-context-menu)
+- [Demo](https://johndatserakis.github.io/vue-simple-context-menu/)
+- [GitHub](https://github.com/johndatserakis/vue-simple-context-menu)
+- [npm](https://www.npmjs.com/package/vue-simple-context-menu)
+- [StackBlitz](https://stackblitz.com/edit/vue-chj3sg?file=src/App.vue)
 
 ## Vue 3 Support
 
@@ -40,19 +43,16 @@ Just a simple little menu to be shown where a click happens - closes after use a
 
 A nice feature that comes baked in is the menu placement after a click - it sits just ever so slightly under your click location - so that any hover style you had on the item that was clicked gets removed nicely. I modeled it after the macOS right click menu.
 
-## Usage Example
-
-```css
-/* CSS import for when you want to import the component CSS into your CSS file/files */
-@import '/path/to/node_modules/vue-simple-context-menu.css';
-```
+## Usage
 
 ```js
-// CSS import for when you're importing the CSS directly in your JS
-import 'vue-simple-context-menu/dist/vue-simple-context-menu.css';
+import { createApp } from 'vue';
 import VueSimpleContextMenu from 'vue-simple-context-menu';
+import 'vue-simple-context-menu/dist/vue-simple-context-menu.css';
 
-Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
+const app = createApp(App);
+
+app.component('vue-simple-context-menu', VueSimpleContextMenu);
 ```
 
 ```html
@@ -142,7 +142,7 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 yarn
 
 # Serve with hot reload
-yarn watch
+yarn dev
 
 # Run the tests
 yarn test
