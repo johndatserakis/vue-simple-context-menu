@@ -85,7 +85,7 @@
     "build": "npm run test && npm run build:example && npm run build:library",
     "build:es": "rollup --config rollup.config.js --format es --file dist/vue-simple-context-menu.esm.js",
     "build:example": "rimraf docs && cross-env NODE_ENV=production webpack --progress --hide-modules --mode production",
-    "build:library": "rimraf dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
+    "build:library": "rimraf dist && npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
     "build:umd": "rollup --config rollup.config.js --format umd --file dist/vue-simple-context-menu.umd.js",
     "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/vue-simple-context-menu.min.js",
     "test": "jest",
