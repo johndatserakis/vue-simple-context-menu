@@ -1,5 +1,13 @@
 # CHANGELOG.md
 
+## 4.0.0
+
+- Upgrade package to support Vue 3. Vue 2 support can be found at `v3.4.2`. Thank you @danielelkington.
+
+## 3.4.2
+
+- Add menu-closed event. Thank you @rttmax.
+
 ## 3.4.1
 
 - Add support for HTML content in `option.name`. Thank you @mikeerickson.

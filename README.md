@@ -10,21 +10,15 @@ Simple context-menu component built for Vue. Works well with both left and right
   <img src="https://img.shields.io/twitter/url/https/github.com/johndatserakis/vue-simple-context-menu.svg?style=social" alt="Tweet"></a>
 </p>
 
-### Demo
+[View Demo](https://johndatserakis.github.io/vue-simple-context-menu/) | [GitHub](https://github.com/johndatserakis/vue-simple-context-menu) | [npm](https://www.npmjs.com/package/vue-simple-context-menu)
 
-[View demo](https://johndatserakis.github.io/vue-simple-context-menu/)
+## Vue 3 Support
 
-[View on npm](https://www.npmjs.com/package/vue-simple-context-menu)
+Vue 3 is supported from `v4.0.0` and beyond (current `master`). To use `vue-simple-context-menu` with Vue 2, use `v3.4.2`.
 
-[View on GitHub](https://github.com/johndatserakis/vue-simple-context-menu)
-
-### Install
+## Install
 
 ```
-# npm
-npm i vue-simple-context-menu
-
-# yarn
 yarn add vue-simple-context-menu
 ```
 
@@ -40,25 +34,25 @@ Or you can include it through the browser at the bottom of your page along with 
 />
 ```
 
-### About
+## About
 
-Just a simple little menu to be shown where a click happens - closes after use automatically by clicking an option or outside of the menu. Multiple menus are supported - just make sure to use a unique string as your `elementId` prop value.
+Just a simple little menu to be shown where a click happens - closes after use automatically by clicking an option or outside of the menu. Multiple menus are supported - just make sure to use a unique string as your `element-id` prop value.
 
 A nice feature that comes baked in is the menu placement after a click - it sits just ever so slightly under your click location - so that any hover style you had on the item that was clicked gets removed nicely. I modeled it after the macOS right click menu.
 
-### Usage Example
+## Usage Example
 
 ```css
-/* css import for when you want to import the component css into your css file/files */
-@import "/path/to/node_modules/vue-simple-context-menu.css";
+/* CSS import for when you want to import the component CSS into your CSS file/files */
+@import '/path/to/node_modules/vue-simple-context-menu.css';
 ```
 
 ```js
-// css import for when you're importing the css directly in your js
-import "vue-simple-context-menu/dist/vue-simple-context-menu.css";
-import VueSimpleContextMenu from "vue-simple-context-menu";
+// CSS import for when you're importing the CSS directly in your JS
+import 'vue-simple-context-menu/dist/vue-simple-context-menu.css';
+import VueSimpleContextMenu from 'vue-simple-context-menu';
 
-Vue.component("vue-simple-context-menu", VueSimpleContextMenu);
+Vue.component('vue-simple-context-menu', VueSimpleContextMenu);
 ```
 
 ```html
@@ -78,9 +72,9 @@ Each item has a click event that ties to a function. See the demo for a full exa
 <!-- Make sure you add the `ref` attribute, as that is what gives you the ability
 to open the menu. -->
 <vue-simple-context-menu
-  :elementId="'myUniqueId'"
+  element-id="myUniqueId"
   :options="options"
-  :ref="'vueSimpleContextMenu'"
+  ref="vueSimpleContextMenu"
   @option-clicked="optionClicked"
 />
 ```
@@ -100,31 +94,31 @@ Note - you must pass the click event-info variable to the `showMenu()` function 
 
 Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` for right click) when setting up the click handler.
 
-### Props
+## Props
 
 | prop            | type   | description                                                                                  | required |
 | --------------- | ------ | -------------------------------------------------------------------------------------------- | -------- |
 | `elementId`     | String | Unique String that acts as the id of your menu.                                              | Yes      |
 | `options`       | Array  | Array of menu options to show. Component will use the `name` parameter as the label.         | Yes      |
-| `options.name`  | Array  | Label for the option.                                                                        | Yes      |
+| `options.name`  | String | Label for the option.                                                                        | Yes      |
 | `options.class` | String | A custom class that will be applied to the option.                                           | No       |
 | `options.type`  | String | Only one possible value at the moment - `divider`. Pass this to set the object as a divider. | No       |
 | `ref`           | String | Unique String that allows you to show the menu on command.                                   | Yes      |
 
-### Methods
+## Methods
 
 | method     | parameters                        | description                                                          |
 | ---------- | --------------------------------- | -------------------------------------------------------------------- |
 | `showMenu` | event (MouseEvent), item (Object) | Used to show the menu. Make sure to pass a MouseEvent and an Object. |
 
-### Events
+## Events
 
 | event            | value  | description                                                                                                                                                                                          |
 | ---------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `option-clicked` | Object | When a menu item is clicked the component will emit an event with a value containing the clicked item and the menu option that was clicked. Register for this event to capture the selection result. |
 | `menu-closed`    |        | Emitted when the menu is closed                                                                                                                                                                      |
 
-### SASS Structure
+## SASS Structure
 
 ```scss
 .vue-simple-context-menu {
@@ -141,38 +135,36 @@ Note - make sure to use `@click.prevent.stop` (or `@contextmenu.prevent.stop` fo
 }
 ```
 
-### Development
+## Development
 
 ```bash
-# install dependencies
-npm install
+# Install dependencies
+yarn
 
-# serve with hot reload
-npm run watch
+# Serve with hot reload
+yarn watch
 
-# run the tests
-npm run test
+# Run the tests
+yarn test
 
-# build demo page
-npm run build:example
+# Build demo page
+yarn build:example
 
-# build library
-npm run build:library
+# Build library
+yarn build:library
 
-# build everything and run tests
-npm run build
+# Build everything and run tests
+yarn build
 ```
 
-### Other
+## Other
 
 Go ahead and fork the project! Submit an issue if needed. Have fun!
 
-### Thank You
+## Thank You
 
 Influenced by [Lucas Calazans](https://codepen.io/lucascalazans)'s [pen](https://codepen.io/lucascalazans/pen/ALvVVw). Go ahead and check out his other work.
 
-### License
+## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-Packaged with a mixture of [vue-lib-template](https://github.com/biigpongsatorn/vue-lib-template) and [vue-sfc-rollup](https://github.com/team-innovation/vue-sfc-rollup).

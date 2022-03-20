@@ -12,29 +12,26 @@ var vClickOutside_umd = createCommonjsModule(function (module, exports) {
 });
 
 var script = {
-  name: "VueSimpleContextMenu",
+  name: 'VueSimpleContextMenu',
   props: {
     elementId: {
       type: String,
-      required: true
+      required: true,
     },
     options: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
-  emits: [
-    'menu-closed',
-    'option-clicked'
-  ],
+  emits: ['menu-closed', 'option-clicked'],
   directives: {
-    'click-outside': vClickOutside_umd.directive
+    'click-outside': vClickOutside_umd.directive,
   },
   data: function data() {
     return {
       item: null,
+      menuHeight: null,
       menuWidth: null,
-      menuHeight: null
     };
   },
   methods: {
@@ -47,32 +44,32 @@ var script = {
       }
 
       if (!this.menuWidth || !this.menuHeight) {
-        menu.style.visibility = "hidden";
-        menu.style.display = "block";
+        menu.style.visibility = 'hidden';
+        menu.style.display = 'block';
         this.menuWidth = menu.offsetWidth;
         this.menuHeight = menu.offsetHeight;
-        menu.removeAttribute("style");
+        menu.removeAttribute('style');
       }
 
       if (this.menuWidth + event.pageX >= window.innerWidth) {
-        menu.style.left = event.pageX - this.menuWidth + 2 + "px";
+        menu.style.left = event.pageX - this.menuWidth + 2 + 'px';
       } else {
-        menu.style.left = event.pageX - 2 + "px";
+        menu.style.left = event.pageX - 2 + 'px';
       }
 
       if (this.menuHeight + event.pageY >= window.innerHeight) {
-        menu.style.top = event.pageY - this.menuHeight + 2 + "px";
+        menu.style.top = event.pageY - this.menuHeight + 2 + 'px';
       } else {
-        menu.style.top = event.pageY - 2 + "px";
+        menu.style.top = event.pageY - 2 + 'px';
       }
 
-      menu.classList.add("vue-simple-context-menu--active");
+      menu.classList.add('vue-simple-context-menu--active');
     },
     hideContextMenu: function hideContextMenu() {
       var element = document.getElementById(this.elementId);
       if (element) {
-        element.classList.remove("vue-simple-context-menu--active");
-        this.$emit("menu-closed");
+        element.classList.remove('vue-simple-context-menu--active');
+        this.$emit('menu-closed');
       }
     },
     onClickOutside: function onClickOutside() {
@@ -80,23 +77,23 @@ var script = {
     },
     optionClicked: function optionClicked(option) {
       this.hideContextMenu();
-      this.$emit("option-clicked", {
+      this.$emit('option-clicked', {
         item: this.item,
-        option: option
+        option: option,
       });
     },
     onEscKeyRelease: function onEscKeyRelease(event) {
       if (event.keyCode === 27) {
         this.hideContextMenu();
       }
-    }
+    },
   },
   mounted: function mounted() {
-    document.body.addEventListener("keyup", this.onEscKeyRelease);
+    document.body.addEventListener('keyup', this.onEscKeyRelease);
   },
   beforeUnmount: function beforeUnmount() {
-    document.removeEventListener("keyup", this.onEscKeyRelease);
-  }
+    document.removeEventListener('keyup', this.onEscKeyRelease);
+  },
 };
 
 var _hoisted_1 = ["id"];
@@ -115,10 +112,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return (openBlock(), createElementBlock("li", {
           key: index,
           onClick: withModifiers(function ($event) { return ($options.optionClicked(option)); }, ["stop"]),
-          class: normalizeClass(["vue-simple-context-menu__item", [
-          option.class,
-          option.type === 'divider' ? 'vue-simple-context-menu__divider' : ''
-        ]])
+          class: normalizeClass(["vue-simple-context-menu__item", [option.class, option.type === 'divider' ? 'vue-simple-context-menu__divider' : '']])
         }, [
           createElementVNode("span", {
             innerHTML: option.name
@@ -136,19 +130,18 @@ script.__file = "src/vue-simple-context-menu.vue";
 
 // Import vue component
 
-// install function executed by app.use()
-function install (app) {
+// Install function executed by app.use()
+function install(app) {
   if (install.installed) { return; }
+
   install.installed = true;
   app.component('VueSimpleContextMenu', script);
 }
 
 // Create module definition for Vue.use()
-var plugin = {
-  install: install,
-};
+var plugin = { install: install };
 
-// To auto-install when vue is found
+// To auto-install when Vue is found
 var GlobalVue = null;
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue;
