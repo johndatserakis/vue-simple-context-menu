@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 4.0.2
+## 4.0.3
 
 - Upgrade package to support Vue 3. Vue 2 support can be found at `v3.4.2`. Thank you @danielelkington.
 

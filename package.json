@@ -93,5 +93,5 @@
   },
   "sideEffects": false,
   "unpkg": "dist/vue-simple-context-menu.min.js",
-  "version": "4.0.2"
+  "version": "4.0.3"
 }
