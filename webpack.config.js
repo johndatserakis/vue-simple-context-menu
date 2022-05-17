@@ -26,6 +26,7 @@ module.exports = {
         ],
       },
       {
+        sideEffects: true,
         test: /\.scss$/,
         use: [
           {
