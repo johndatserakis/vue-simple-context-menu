@@ -25,18 +25,6 @@ Vue 3 is supported from `v4.0.0` and beyond (current `master`). To use `vue-simp
 yarn add vue-simple-context-menu
 ```
 
-Or you can include it through the browser at the bottom of your page along with the css:
-
-```html
-<script src="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.min.js"></script>
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://unpkg.com/vue-simple-context-menu/dist/vue-simple-context-menu.css"
-/>
-```
-
 ## About
 
 Just a simple little menu to be shown where a click happens - closes after use automatically by clicking an option or outside of the menu. Multiple menus are supported - just make sure to use a unique string as your `element-id` prop value.
